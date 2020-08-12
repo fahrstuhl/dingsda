@@ -24,6 +24,7 @@ alignment = 2
 margin_left = 936.0
 margin_right = 976.0
 margin_bottom = 35.0
+hint_tooltip = "Open file"
 theme = ExtResource( 2 )
 text = "📁"
 
@@ -31,6 +32,7 @@ text = "📁"
 margin_left = 984.0
 margin_right = 1024.0
 margin_bottom = 35.0
+hint_tooltip = "Close editor"
 theme = ExtResource( 2 )
 text = "✖"
 

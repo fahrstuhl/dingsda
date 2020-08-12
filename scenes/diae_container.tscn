@@ -22,6 +22,7 @@ alignment = 2
 margin_left = 822.0
 margin_right = 862.0
 margin_bottom = 37.0
+hint_tooltip = "Open file in new editor"
 custom_fonts/font = ExtResource( 2 )
 text = "📁"
 
@@ -29,6 +30,7 @@ text = "📁"
 margin_left = 870.0
 margin_right = 894.0
 margin_bottom = 37.0
+hint_tooltip = "Add a new container"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -37,6 +39,7 @@ __meta__ = {
 margin_left = 902.0
 margin_right = 976.0
 margin_bottom = 37.0
+hint_tooltip = "Change layout"
 custom_fonts/font = ExtResource( 2 )
 text = "📑"
 __meta__ = {
@@ -47,6 +50,7 @@ __meta__ = {
 margin_left = 984.0
 margin_right = 1024.0
 margin_bottom = 37.0
+hint_tooltip = "Close container and all children"
 custom_fonts/font = ExtResource( 2 )
 text = "✖"
 
