@@ -33,6 +33,11 @@ func _on_rich_text_label_gui_input(event):
 		$editor/text_edit.show()
 		$editor/text_edit.grab_focus()
 
-
 func _on_close_pressed():
 	queue_free()
+
+func _on_file_dialog_file_selected(path):
+	set_artefact(path)
+
+func _on_open_pressed():
+	$file_dialog.popup_centered_ratio() # Replace with function body.

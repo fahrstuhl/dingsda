@@ -47,8 +47,10 @@ tabs_visible = false
 [node name="rich_text_label" type="RichTextLabel" parent="editor"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -16.0
-margin_bottom = -85.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = -8.0
+margin_bottom = -8.0
 focus_mode = 2
 bbcode_enabled = true
 __meta__ = {
@@ -59,8 +61,10 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -16.0
-margin_bottom = -69.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = -8.0
+margin_bottom = -8.0
 readonly = true
 fold_gutter = true
 highlight_all_occurrences = true
@@ -69,7 +73,17 @@ wrap_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="file_dialog" type="FileDialog" parent="."]
+margin_right = 645.0
+margin_bottom = 248.0
+mode_overrides_title = false
+access = 2
+current_dir = "/home/fahrstuhl/projects/diae/godiae"
+current_path = "/home/fahrstuhl/projects/diae/godiae/"
+[connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="gui_input" from="editor/rich_text_label" to="." method="_on_rich_text_label_gui_input"]
 [connection signal="focus_exited" from="editor/text_edit" to="." method="_on_text_edit_focus_exited"]
 [connection signal="text_changed" from="editor/text_edit" to="." method="_on_text_edit_text_changed"]
+[connection signal="file_selected" from="file_dialog" to="." method="_on_file_dialog_file_selected"]

@@ -99,6 +99,7 @@ alignment = 1
 [node name="file_dialog" type="FileDialog" parent="."]
 margin_right = 645.0
 margin_bottom = 248.0
+mode_overrides_title = false
 access = 2
 current_dir = "/home/fahrstuhl/projects/diae/godiae"
 current_path = "/home/fahrstuhl/projects/diae/godiae/"
