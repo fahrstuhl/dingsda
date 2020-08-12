@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Artefact",
 "class": "ArtefactMarkdown",
 "language": "GDScript",
-"path": "res://artefact_markdown.gd"
+"path": "res://scripts/artefact_markdown.gd"
 }, {
 "base": "",
 "class": "GitAPI",
@@ -53,6 +53,7 @@ singletons=[ "res://git_api.gdnlib" ]
 [gui]
 
 theme/use_hidpi=true
+theme/custom="res://fonts/app.theme"
 
 [input]
 

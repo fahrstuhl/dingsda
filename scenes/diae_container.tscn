@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/diae_container.gd" type="Script" id=1]
+[ext_resource path="res://fonts/noto_sans_regular.tres" type="DynamicFont" id=2]
+
+[node name="diae_container" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 37.0
+alignment = 2
+
+[node name="open" type="Button" parent="buttons"]
+margin_left = 822.0
+margin_right = 862.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
+text = "📁"
+
+[node name="add_container" type="Button" parent="buttons"]
+margin_left = 870.0
+margin_right = 894.0
+margin_bottom = 37.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="layout" type="OptionButton" parent="buttons"]
+margin_left = 902.0
+margin_right = 976.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
+text = "📑"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close" type="Button" parent="buttons"]
+margin_left = 984.0
+margin_right = 1024.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
+text = "✖"
+
+[node name="layout_container" type="TabContainer" parent="."]
+margin_top = 45.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="tabbed" type="TabContainer" parent="layout_container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="vertical" type="VBoxContainer" parent="layout_container"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = -8.0
+margin_bottom = -8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 1
+alignment = 1
+
+[node name="horizontal" type="HBoxContainer" parent="layout_container"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = -8.0
+margin_bottom = -8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 1
+alignment = 1
+
+[node name="file_dialog" type="FileDialog" parent="."]
+margin_right = 645.0
+margin_bottom = 248.0
+access = 2
+current_dir = "/home/fahrstuhl/projects/diae/godiae"
+current_path = "/home/fahrstuhl/projects/diae/godiae/"
+[connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="buttons/add_container" to="." method="_on_add_container_pressed"]
+[connection signal="item_selected" from="buttons/layout" to="." method="_on_layout_item_selected"]
+[connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
+[connection signal="file_selected" from="file_dialog" to="." method="_on_file_dialog_file_selected"]
