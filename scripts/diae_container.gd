@@ -8,7 +8,16 @@ func _ready():
 
 func add_container(child):
 	var current = get_container_for_index($layout_container.current_tab)
+	child.connect("tree_exited", self, "_on_child_closed")
 	current.add_child(child)
+	toggle_tab_bar()
+
+func _on_child_closed():
+	toggle_tab_bar()
+
+func toggle_tab_bar():
+	var current = get_container_for_index($layout_container.current_tab)
+	$layout_container/tabbed.tabs_visible = current.get_child_count() > 1
 
 func _on_layout_item_selected(new_index):
 	var old_index = $layout_container.current_tab
