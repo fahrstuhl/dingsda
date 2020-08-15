@@ -79,6 +79,7 @@ margin_right = 645.0
 margin_bottom = 248.0
 mode_overrides_title = false
 access = 2
+filters = PoolStringArray( "*.txt ; Text Files", "*.md ; Markdown Documents" )
 current_dir = "/home/fahrstuhl/projects/diae/godiae"
 current_path = "/home/fahrstuhl/projects/diae/godiae/"
 [connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]

@@ -45,6 +45,7 @@ mix_rate=48000
 
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor"
+window/ios/hide_home_indicator=false
 
 [gdnative]
 

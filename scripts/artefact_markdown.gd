@@ -36,3 +36,6 @@ func store_text():
 	else:
 		file.store_string(text)
 		file.close()
+
+static func get_type_name():
+	return "ArtefactMarkdown"
