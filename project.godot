@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Node",
+"class": "Markdown",
+"language": "GDScript",
+"path": "res://bin/libmarkdown.gd"
 } ]
 _global_script_class_icons={
 "Artefact": "",
 "ArtefactMarkdown": "",
-"GitAPI": ""
+"GitAPI": "",
+"Markdown": ""
 }
 
 [application]
@@ -54,7 +60,6 @@ singletons=[ "res://git_api.gdnlib" ]
 [gui]
 
 theme/use_hidpi=true
-theme/custom="res://fonts/app.theme"
 
 [input]
 

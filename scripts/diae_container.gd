@@ -30,7 +30,6 @@ func _on_layout_item_selected(new_index):
 		new.add_child(child)
 		if old_index == 0:
 			child.show()
-	print(new.get_children())
 
 func get_container_for_index(index):
 	match index:

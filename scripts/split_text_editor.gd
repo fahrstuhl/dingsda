@@ -16,14 +16,14 @@ func set_artefact(artefact_path: String):
 		active = true
 
 func _on_text_edit_text_changed():
-	$editor/rich_text_label.bbcode_text = $editor/text_edit.text
+	$editor/rich_text_label.bbcode_text = current_artefact.bbcode_text
 	if not $editor/text_edit.readonly:
 		current_artefact.text = $editor/text_edit.text
 
 func _on_artefact_changed():
 	if $editor/text_edit.readonly:
 		$editor/text_edit.text = current_artefact.text
-		$editor/rich_text_label.bbcode_text = $editor/text_edit.text
+		$editor/rich_text_label.bbcode_text = current_artefact.bbcode_text
 
 func _on_text_edit_focus_exited():
 	$editor/text_edit.readonly = true

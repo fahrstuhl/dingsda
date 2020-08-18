@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/split_text_editor.gd" type="Script" id=1]
 [ext_resource path="res://fonts/app.theme" type="Theme" id=2]
+[ext_resource path="res://fonts/NotoSans-Bold.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/NotoSans-Regular.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/NotoSansMono-Regular.tres" type="DynamicFont" id=5]
+[ext_resource path="res://fonts/NotoSans-Italics.tres" type="DynamicFont" id=6]
+[ext_resource path="res://fonts/NotoSans-BoldItalics.tres" type="DynamicFont" id=7]
+[ext_resource path="res://scripts/markdown_label.gd" type="Script" id=8]
+[ext_resource path="res://fonts/tooltip_panel.tres" type="StyleBox" id=9]
 
 [node name="editor_container" type="VBoxContainer"]
 anchor_right = 1.0
@@ -16,28 +23,28 @@ __meta__ = {
 
 [node name="buttons" type="HBoxContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 35.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 alignment = 2
 
 [node name="open" type="Button" parent="buttons"]
-margin_left = 936.0
-margin_right = 976.0
-margin_bottom = 35.0
+margin_left = 960.0
+margin_right = 988.0
+margin_bottom = 31.0
 hint_tooltip = "Open file"
 theme = ExtResource( 2 )
 text = "📁"
 
 [node name="close" type="Button" parent="buttons"]
-margin_left = 984.0
+margin_left = 996.0
 margin_right = 1024.0
-margin_bottom = 35.0
+margin_bottom = 31.0
 hint_tooltip = "Close editor"
 theme = ExtResource( 2 )
 text = "✖"
 
 [node name="editor" type="TabContainer" parent="."]
-margin_top = 43.0
+margin_top = 39.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
@@ -52,10 +59,32 @@ margin_top = 16.0
 margin_right = -8.0
 margin_bottom = -8.0
 focus_mode = 2
+custom_fonts/mono_font = ExtResource( 5 )
+custom_fonts/bold_italics_font = ExtResource( 7 )
+custom_fonts/italics_font = ExtResource( 6 )
+custom_fonts/bold_font = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="meta_hover_timer" type="Timer" parent="editor/rich_text_label"]
+wait_time = 0.333
+one_shot = true
+
+[node name="meta_hover_panel" type="Panel" parent="editor/rich_text_label"]
+visible = false
+custom_styles/panel = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="meta_hover_text" type="Label" parent="editor/rich_text_label/meta_hover_panel"]
+margin_right = 8.0
+margin_bottom = 33.0
+size_flags_vertical = 1
 
 [node name="text_edit" type="TextEdit" parent="editor"]
 visible = false
@@ -85,6 +114,9 @@ current_path = "/home/fahrstuhl/projects/diae/godiae/"
 [connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="gui_input" from="editor/rich_text_label" to="." method="_on_rich_text_label_gui_input"]
+[connection signal="meta_hover_ended" from="editor/rich_text_label" to="editor/rich_text_label" method="_on_rich_text_label_meta_hover_ended"]
+[connection signal="meta_hover_started" from="editor/rich_text_label" to="editor/rich_text_label" method="_on_rich_text_label_meta_hover_started"]
+[connection signal="timeout" from="editor/rich_text_label/meta_hover_timer" to="editor/rich_text_label" method="_on_meta_hover_timer_timeout"]
 [connection signal="focus_exited" from="editor/text_edit" to="." method="_on_text_edit_focus_exited"]
 [connection signal="text_changed" from="editor/text_edit" to="." method="_on_text_edit_text_changed"]
 [connection signal="file_selected" from="file_dialog" to="." method="_on_file_dialog_file_selected"]
