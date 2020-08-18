@@ -12,12 +12,13 @@ func get_artefact_type(path: String):
 
 func is_valid_artefact_of_type(path, requested_type):
 	var file = File.new()
-	if not file.file_exists(path):
-		return ERR_FILE_NOT_FOUND
 	var type = get_artefact_type(path)
 	if requested_type != type:
 		push_error("Type mismatch. Requested {0}, got {1}.".format([requested_type.get_type_name(), type.get_type_name()]))
 		return FAILED
+	if not file.file_exists(path):
+		file.open(path, file.WRITE)
+		file.close()
 	return OK
 
 func load_artefact(path: String):

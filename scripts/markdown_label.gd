@@ -10,7 +10,7 @@ func _on_rich_text_label_meta_hover_started(meta):
 	$meta_hover_panel/meta_hover_text.text = meta
 	$meta_hover_timer.start()
 
-func _on_rich_text_label_meta_hover_ended(meta):
+func _on_rich_text_label_meta_hover_ended(_meta):
 	$meta_hover_panel.hide()
 	$meta_hover_timer.stop()
 	

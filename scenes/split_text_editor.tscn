@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/split_text_editor.gd" type="Script" id=1]
 [ext_resource path="res://fonts/app.theme" type="Theme" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://fonts/NotoSans-Italics.tres" type="DynamicFont" id=6]
 [ext_resource path="res://fonts/NotoSans-BoldItalics.tres" type="DynamicFont" id=7]
 [ext_resource path="res://scripts/markdown_label.gd" type="Script" id=8]
-[ext_resource path="res://fonts/tooltip_panel.tres" type="StyleBox" id=9]
 
 [node name="editor_container" type="VBoxContainer"]
 anchor_right = 1.0
@@ -26,6 +25,13 @@ margin_right = 1024.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 alignment = 2
+
+[node name="title" type="Label" parent="buttons"]
+margin_left = 952.0
+margin_top = 3.0
+margin_right = 952.0
+margin_bottom = 28.0
+hint_tooltip = "Path of current document."
 
 [node name="open" type="Button" parent="buttons"]
 margin_left = 960.0
@@ -76,7 +82,6 @@ one_shot = true
 
 [node name="meta_hover_panel" type="Panel" parent="editor/rich_text_label"]
 visible = false
-custom_styles/panel = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -107,13 +112,14 @@ __meta__ = {
 margin_right = 645.0
 margin_bottom = 248.0
 mode_overrides_title = false
-access = 2
+access = 1
 filters = PoolStringArray( "*.txt ; Text Files", "*.md ; Markdown Documents" )
-current_dir = "/home/fahrstuhl/projects/diae/godiae"
-current_path = "/home/fahrstuhl/projects/diae/godiae/"
+current_dir = "user://"
+current_path = "user://"
 [connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="gui_input" from="editor/rich_text_label" to="." method="_on_rich_text_label_gui_input"]
+[connection signal="meta_clicked" from="editor/rich_text_label" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="meta_hover_ended" from="editor/rich_text_label" to="editor/rich_text_label" method="_on_rich_text_label_meta_hover_ended"]
 [connection signal="meta_hover_started" from="editor/rich_text_label" to="editor/rich_text_label" method="_on_rich_text_label_meta_hover_started"]
 [connection signal="timeout" from="editor/rich_text_label/meta_hover_timer" to="editor/rich_text_label" method="_on_meta_hover_timer_timeout"]

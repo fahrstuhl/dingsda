@@ -3,6 +3,15 @@ extends Container
 var current_artefact: ArtefactMarkdown
 var active = false
 
+signal open_artefact(artefact_path)
+signal name_changed
+
+func get_title():
+	if not current_artefact == null:
+		return current_artefact.path
+	else:
+		return "Markdown Editor"
+
 func set_artefact(artefact_path: String):
 	active = false
 	var artefact_manager = get_node("/root/app/artefact_manager")
@@ -14,11 +23,16 @@ func set_artefact(artefact_path: String):
 		_on_text_edit_focus_exited()
 		_on_text_edit_text_changed()
 		active = true
+		name_changed()
+
+func name_changed():
+	$buttons/title.set_text(get_title())
+	emit_signal("name_changed")
 
 func _on_text_edit_text_changed():
-	$editor/rich_text_label.bbcode_text = current_artefact.bbcode_text
 	if not $editor/text_edit.readonly:
 		current_artefact.text = $editor/text_edit.text
+	$editor/rich_text_label.bbcode_text = current_artefact.bbcode_text
 
 func _on_artefact_changed():
 	if $editor/text_edit.readonly:
@@ -50,4 +64,11 @@ func _on_file_dialog_file_selected(path):
 	set_artefact(path)
 
 func _on_open_pressed():
-	$file_dialog.popup_centered_ratio() # Replace with function body.
+	$file_dialog.popup_centered_ratio()
+
+func _on_rich_text_label_meta_clicked(meta: String):
+	if meta.begins_with("#"):
+		var artefact_name = "{0}.md".format([meta])
+		artefact_name.erase(0, 1)
+		var path = "user:///{0}".format([artefact_name])
+		emit_signal("open_artefact", path)
