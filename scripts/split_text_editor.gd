@@ -73,5 +73,5 @@ func _on_rich_text_label_meta_clicked(meta: String):
 	if meta.begins_with("#"):
 		var artefact_name = "{0}.md".format([meta])
 		artefact_name.erase(0, 1)
-		var path = "{0}{1}".format([Global.get_setting("library_path"), artefact_name])
+		var path = "{0}/{1}".format([Global.get_setting("library_path"), artefact_name])
 		emit_signal("open_artefact", path)
