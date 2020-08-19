@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/path_select.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/settings_editor.gd" type="Script" id=2]
+
+[node name="settings_editor" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -986.362, -358.808 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 37.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close" type="Button" parent="buttons"]
+margin_left = 1000.0
+margin_right = 1024.0
+margin_bottom = 37.0
+text = "✖"
+
+[node name="settings_container" type="VBoxContainer" parent="."]
+margin_top = 45.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="library_path" parent="settings_container" instance=ExtResource( 1 )]
+anchor_right = 0.0
+setting_name = "library_path"
+setting_description = "Path to godiae document library."
+[connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
+[connection signal="path_changed" from="settings_container/library_path" to="." method="_on_library_path_path_changed"]

@@ -2,6 +2,11 @@ extends VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var base_dir = Global.get_setting("library_path")
+	print(base_dir)
+	$file_dialog.current_dir = base_dir
+	if get_parent().name == "app":
+		$buttons/settings.show()
 	$buttons/layout.add_item("Tabbed")
 	$buttons/layout.add_item("Vertical")
 	$buttons/layout.add_item("Horizontal")
@@ -81,3 +86,10 @@ func open_artefact(path):
 	editor.connect("open_artefact", self, "_on_open_artefact_received")
 	editor.connect("name_changed", self, "_on_editor_name_changed")
 	editor.set_artefact(path)
+
+func get_title():
+	return "Container"
+
+func _on_settings_pressed():
+	var editor = load("res://scenes/settings_editor.tscn").instance()
+	add_container(editor)

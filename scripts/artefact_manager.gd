@@ -6,6 +6,11 @@ func get_artefact_type(path: String):
 	match ext:
 		"md", "txt":
 			type = ArtefactMarkdown
+		"ini":
+			if path == Global.settings_path:
+				type = ArtefactSettings
+			else:
+				type = Artefact
 		_:
 			type = Artefact
 	return type

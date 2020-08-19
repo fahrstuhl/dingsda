@@ -10,16 +10,15 @@ func init(file_path):
 	path = file_path
 	file = File.new()
 	if not file.file_exists(path):
-		store_text()
-	set_text(load_text())
+		store_content()
+	set_text(load_content())
 
 func set_text(new_text):
 	text = new_text
 	bbcode_text = Markdown.convert_markdown(new_text)
 	emit_signal("changed")
-	store_text()
 
-func load_text():
+func load_content():
 	var error = file.open(path, File.READ)
 	var result = ""
 	if error != OK:
@@ -31,7 +30,7 @@ func load_text():
 		file.close()
 	return result
 
-func store_text():
+func write_to_file():
 	var error = file.open(path, File.WRITE)
 	if error != OK:
 		printerr("Can't open file for writing.")

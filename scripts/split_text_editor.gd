@@ -6,6 +6,9 @@ var active = false
 signal open_artefact(artefact_path)
 signal name_changed
 
+func _ready():
+	$file_dialog.current_dir = Global.get_setting("library_path")
+
 func get_title():
 	if not current_artefact == null:
 		return current_artefact.path
@@ -14,9 +17,8 @@ func get_title():
 
 func set_artefact(artefact_path: String):
 	active = false
-	var artefact_manager = get_node("/root/app/artefact_manager")
-	if artefact_manager.is_valid_artefact_of_type(artefact_path, ArtefactMarkdown) == OK:
-		current_artefact = artefact_manager.load_artefact(artefact_path)
+	if ArtefactManager.is_valid_artefact_of_type(artefact_path, ArtefactMarkdown) == OK:
+		current_artefact = ArtefactManager.load_artefact(artefact_path)
 		assert(current_artefact is ArtefactMarkdown)
 		current_artefact.connect("changed", self, "_on_artefact_changed")
 		$editor/text_edit.text = current_artefact.text
@@ -43,6 +45,7 @@ func _on_text_edit_focus_exited():
 	$editor/text_edit.readonly = true
 	$editor/text_edit.hide()
 	$editor/rich_text_label.show()
+	current_artefact.store_content()
 
 func _on_rich_text_label_gui_input(event):
 	if active:
@@ -70,5 +73,5 @@ func _on_rich_text_label_meta_clicked(meta: String):
 	if meta.begins_with("#"):
 		var artefact_name = "{0}.md".format([meta])
 		artefact_name.erase(0, 1)
-		var path = "user:///{0}".format([artefact_name])
+		var path = "{0}{1}".format([Global.get_setting("library_path"), artefact_name])
 		emit_signal("open_artefact", path)

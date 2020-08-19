@@ -17,6 +17,13 @@ margin_right = 1024.0
 margin_bottom = 37.0
 alignment = 2
 
+[node name="settings" type="Button" parent="buttons"]
+visible = false
+margin_left = 838.0
+margin_right = 862.0
+margin_bottom = 37.0
+text = "⚙"
+
 [node name="open" type="Button" parent="buttons"]
 margin_left = 870.0
 margin_right = 894.0
@@ -97,9 +104,10 @@ alignment = 1
 margin_right = 645.0
 margin_bottom = 248.0
 mode_overrides_title = false
-access = 1
-current_dir = "user://"
-current_path = "user://"
+access = 2
+current_dir = "/home/fahrstuhl/projects/diae/godiae"
+current_path = "/home/fahrstuhl/projects/diae/godiae/"
+[connection signal="pressed" from="buttons/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="buttons/add_container" to="." method="_on_add_container_pressed"]
 [connection signal="item_selected" from="buttons/layout" to="." method="_on_layout_item_selected"]

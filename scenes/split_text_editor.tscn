@@ -112,10 +112,10 @@ __meta__ = {
 margin_right = 645.0
 margin_bottom = 248.0
 mode_overrides_title = false
-access = 1
+access = 2
 filters = PoolStringArray( "*.txt ; Text Files", "*.md ; Markdown Documents" )
-current_dir = "user://"
-current_path = "user://"
+current_dir = "/home/fahrstuhl/projects/diae/godiae"
+current_path = "/home/fahrstuhl/projects/diae/godiae/"
 [connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="gui_input" from="editor/rich_text_label" to="." method="_on_rich_text_label_gui_input"]
