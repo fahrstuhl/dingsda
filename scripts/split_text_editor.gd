@@ -75,3 +75,5 @@ func _on_rich_text_label_meta_clicked(meta: String):
 		artefact_name.erase(0, 1)
 		var path = "{0}/{1}".format([Global.get_setting("library_path"), artefact_name])
 		emit_signal("open_artefact", path)
+	else:
+		OS.shell_open(meta)
