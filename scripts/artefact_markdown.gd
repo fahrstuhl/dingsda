@@ -15,7 +15,6 @@ func init(file_path):
 
 func set_text(new_text):
 	text = new_text
-	bbcode_text = Markdown.convert_markdown(new_text)
 	emit_signal("changed")
 
 func load_content():
@@ -37,6 +36,10 @@ func write_to_file():
 	else:
 		file.store_string(text)
 		file.close()
+
+func render():
+	bbcode_text = Markdown.convert_markdown(text)
+	emit_signal("rendered")
 
 static func get_type_name():
 	return "ArtefactMarkdown"

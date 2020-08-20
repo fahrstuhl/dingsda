@@ -21,6 +21,7 @@ func set_artefact(artefact_path: String):
 		current_artefact = ArtefactManager.load_artefact(artefact_path)
 		assert(current_artefact is ArtefactMarkdown)
 		current_artefact.connect("changed", self, "_on_artefact_changed")
+		current_artefact.connect("rendered", self, "_on_artefact_rendered")
 		$editor/text_edit.text = current_artefact.text
 		_on_text_edit_focus_exited()
 		_on_text_edit_text_changed()
@@ -34,17 +35,19 @@ func name_changed():
 func _on_text_edit_text_changed():
 	if not $editor/text_edit.readonly:
 		current_artefact.text = $editor/text_edit.text
-	$editor/rich_text_label.bbcode_text = current_artefact.bbcode_text
 
 func _on_artefact_changed():
 	if $editor/text_edit.readonly:
 		$editor/text_edit.text = current_artefact.text
-		$editor/rich_text_label.bbcode_text = current_artefact.bbcode_text
+
+func _on_artefact_rendered():
+	$editor/rich_text_label.bbcode_text = current_artefact.bbcode_text
 
 func _on_text_edit_focus_exited():
 	$editor/text_edit.readonly = true
 	$editor/text_edit.hide()
 	$editor/rich_text_label.show()
+	current_artefact.render_content()
 	current_artefact.store_content()
 
 func _on_rich_text_label_gui_input(event):
