@@ -1,6 +1,6 @@
 extends Node
 
-var settings_path = "user:///settings.ini"
+var settings_path = "user://settings.ini"
 var settings: ArtefactSettings
 
 func _ready():
@@ -10,9 +10,9 @@ func get_setting(path):
 	return settings.get_setting(path)
 
 func add_recent_artefact(path):
-	if path == "user:///recent_artefacts.md":
+	if path == "user://recent_artefacts.md":
 		return
-	var recent: Array = settings.get_setting("recent_artefacts")
+	var recent: Array = get_setting("recent_artefacts")
 	var count = recent.count(path)
 	for i in range(count):
 		var old_index = recent.find(path)

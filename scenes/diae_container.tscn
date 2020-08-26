@@ -126,6 +126,16 @@ mode_overrides_title = false
 access = 2
 current_dir = "/home/fahrstuhl/projects/diae/godiae"
 current_path = "/home/fahrstuhl/projects/diae/godiae/"
+
+[node name="search_panel" type="PopupPanel" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+
+[node name="rich_text_label" type="RichTextLabel" parent="search_panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 [connection signal="text_entered" from="controls/search_bar" to="." method="_on_search_bar_text_entered"]
 [connection signal="pressed" from="controls/search" to="." method="_on_search_pressed"]
 [connection signal="pressed" from="controls/settings" to="." method="_on_settings_pressed"]

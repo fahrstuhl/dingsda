@@ -114,5 +114,6 @@ func _on_search_bar_text_entered(new_text):
 	search(new_text)
 
 func search(text):
-	var results = Search.search(text)
-	print(results)
+	var results = Search.search(text, Global.get_setting("library_path"))
+	$search_panel/rich_text_label.text = str(results)
+	$search_panel.popup_centered_ratio()

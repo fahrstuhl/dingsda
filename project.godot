@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Markdown",
 "language": "GDScript",
 "path": "res://bin/libmarkdown.gd"
+}, {
+"base": "Node",
+"class": "Util",
+"language": "GDScript",
+"path": "res://scripts/util.gd"
 } ]
 _global_script_class_icons={
 "Artefact": "",
 "ArtefactMarkdown": "",
 "ArtefactSettings": "",
-"Markdown": ""
+"Markdown": "",
+"Util": ""
 }
 
 [application]
