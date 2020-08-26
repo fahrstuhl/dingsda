@@ -48,7 +48,7 @@ func search_content(string, filenames):
 	var results = {}
 	for path in filenames:
 		var artefact = ArtefactManager.load_artefact(path, false)
-		if string in artefact.text:
+		if artefact.text.findn(string) != -1:
 			results[path] = ""
 	return results
 
@@ -58,7 +58,7 @@ func search_metadata(string, filenames):
 		var artefact = ArtefactManager.load_artefact(path, false)
 		var metadata = artefact.get_metadata()
 		for key in metadata:
-			if string in metadata[key]:
+			if metadata[key].findn(string) != -1:
 				if not results.has(path):
 					results[path] = []
 				results[path].append(key)

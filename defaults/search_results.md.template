@@ -1,0 +1,11 @@
+# Matching Filenames:
+
+{files}
+
+# Matching Metadata:
+
+{metadata}
+
+# Matching Content:
+
+{content}

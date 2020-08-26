@@ -114,6 +114,31 @@ func _on_search_bar_text_entered(new_text):
 	search(new_text)
 
 func search(text):
+	var lib = Global.get_setting("library_path")
 	var results = Search.search(text, Global.get_setting("library_path"))
-	$search_panel/rich_text_label.text = str(results)
+	var file = File.new()
+	file.open("res:///defaults/search_results.md.template", File.READ)
+	var template = file.get_as_text()
+	file.close()
+	var formatted_results = {
+		"files": "",
+		"metadata": "",
+		"content": "",
+	}
+	for path in results["files"]:
+		formatted_results["files"] += "* [{title}](<{link}>)\n".format({
+			"title": path.trim_prefix(lib),
+			"link": path,
+		})
+#	for artefact in recent:
+#		var title = artefact.get_file()
+#		var link = artefact
+#		recent_string += "1. [{title}](<{link}>)\n".format({"title": title, "link": link})
+	var formatted = template.format(formatted_results)
+	file.store_string(formatted)
+	$search_panel/editor_container.set_artefact("user://search_results.md")
+	$search_panel/editor_container/buttons/close.hide()
+	$search_panel/editor_container.active = false
+	$search_panel/editor_container.current_artefact.text = formatted
+	$search_panel/editor_container.current_artefact.render()
 	$search_panel.popup_centered_ratio()
