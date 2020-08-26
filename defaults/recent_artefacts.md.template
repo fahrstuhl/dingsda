@@ -1,3 +1,6 @@
+[_metadata_:Warning]: <Warning, recent_artefacts.md will be overwritten on each program start!>
+[_metadata_:Suggestion]: <For lasting changes, edit recent_artefacts.md.template instead!>
+
 # Recently Opened:
 
-{0}
+{recent_documents}
