@@ -22,35 +22,35 @@ __meta__ = {
 
 [node name="buttons" type="HBoxContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 31.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 alignment = 2
 
 [node name="title" type="Label" parent="buttons"]
-margin_left = 952.0
-margin_top = 3.0
-margin_right = 952.0
-margin_bottom = 28.0
+margin_left = 984.0
+margin_top = 4.0
+margin_right = 984.0
+margin_bottom = 29.0
 hint_tooltip = "Path of current document."
 
 [node name="open" type="Button" parent="buttons"]
-margin_left = 960.0
-margin_right = 988.0
-margin_bottom = 31.0
+margin_left = 992.0
+margin_right = 1004.0
+margin_bottom = 33.0
 hint_tooltip = "Open file"
 theme = ExtResource( 2 )
 text = "📁"
 
 [node name="close" type="Button" parent="buttons"]
-margin_left = 996.0
+margin_left = 1012.0
 margin_right = 1024.0
-margin_bottom = 31.0
+margin_bottom = 33.0
 hint_tooltip = "Close editor"
 theme = ExtResource( 2 )
 text = "✖"
 
 [node name="editor" type="TabContainer" parent="."]
-margin_top = 39.0
+margin_top = 41.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
@@ -105,6 +105,7 @@ fold_gutter = true
 highlight_all_occurrences = true
 smooth_scrolling = true
 wrap_enabled = true
+caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

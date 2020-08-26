@@ -6,10 +6,12 @@ func _ready():
 	print(base_dir)
 	$file_dialog.current_dir = base_dir
 	if get_parent().name == "app":
-		$buttons/settings.show()
-	$buttons/layout.add_item("Tabbed")
-	$buttons/layout.add_item("Vertical")
-	$buttons/layout.add_item("Horizontal")
+		$controls/settings.show()
+		$controls/search.show()
+		$controls/search_bar.show()
+	$controls/layout.add_item("Tabbed")
+	$controls/layout.add_item("Vertical")
+	$controls/layout.add_item("Horizontal")
 
 func add_container(child):
 	var current = get_container_for_index($layout_container.current_tab)
@@ -81,15 +83,35 @@ func refresh_tab_titles():
 			tab_container.set_tab_title(i, title)
 
 func open_artefact(path):
+	var type = ArtefactManager.get_artefact_type(path)
+	match type:
+		ArtefactMarkdown:
+			open_artefact_markdown(path)
+		ArtefactSettings:
+			_on_settings_pressed()
+		_:
+			return
+
+func open_artefact_markdown(path):
 	var editor = load("res://scenes/split_text_editor.tscn").instance()
 	add_container(editor)
 	editor.connect("open_artefact", self, "_on_open_artefact_received")
 	editor.connect("name_changed", self, "_on_editor_name_changed")
 	editor.set_artefact(path)
-
+	
 func get_title():
 	return "Container"
 
 func _on_settings_pressed():
 	var editor = load("res://scenes/settings_editor.tscn").instance()
 	add_container(editor)
+
+func _on_search_pressed():
+	var text = $controls/search_bar.text
+	search(text)
+
+func _on_search_bar_text_entered(new_text):
+	search(new_text)
+
+func search(text):
+	pass

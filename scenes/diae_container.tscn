@@ -12,26 +12,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="buttons" type="HBoxContainer" parent="."]
+[node name="controls" type="HBoxContainer" parent="."]
 margin_right = 1024.0
 margin_bottom = 37.0
 alignment = 2
 
-[node name="settings" type="Button" parent="buttons"]
+[node name="search_bar" type="LineEdit" parent="controls"]
+visible = false
+margin_left = 698.0
+margin_right = 862.0
+margin_bottom = 45.0
+hint_tooltip = "Search for artefacts in your library."
+size_flags_horizontal = 3
+placeholder_text = "Search"
+caret_blink = true
+
+[node name="search" type="Button" parent="controls"]
+visible = false
+margin_left = 838.0
+margin_right = 862.0
+margin_bottom = 37.0
+text = "▶"
+
+[node name="settings" type="Button" parent="controls"]
 visible = false
 margin_left = 838.0
 margin_right = 862.0
 margin_bottom = 37.0
 text = "⚙"
 
-[node name="open" type="Button" parent="buttons"]
+[node name="open" type="Button" parent="controls"]
 margin_left = 870.0
 margin_right = 894.0
 margin_bottom = 37.0
 hint_tooltip = "Open file in new editor"
 text = "📁"
 
-[node name="add_container" type="Button" parent="buttons"]
+[node name="add_container" type="Button" parent="controls"]
 margin_left = 902.0
 margin_right = 926.0
 margin_bottom = 37.0
@@ -41,7 +58,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="layout" type="OptionButton" parent="buttons"]
+[node name="layout" type="OptionButton" parent="controls"]
 margin_left = 934.0
 margin_right = 992.0
 margin_bottom = 37.0
@@ -51,7 +68,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="close" type="Button" parent="buttons"]
+[node name="close" type="Button" parent="controls"]
 margin_left = 1000.0
 margin_right = 1024.0
 margin_bottom = 37.0
@@ -107,9 +124,11 @@ mode_overrides_title = false
 access = 2
 current_dir = "/home/fahrstuhl/projects/diae/godiae"
 current_path = "/home/fahrstuhl/projects/diae/godiae/"
-[connection signal="pressed" from="buttons/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
-[connection signal="pressed" from="buttons/add_container" to="." method="_on_add_container_pressed"]
-[connection signal="item_selected" from="buttons/layout" to="." method="_on_layout_item_selected"]
-[connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
+[connection signal="text_entered" from="controls/search_bar" to="." method="_on_search_bar_text_entered"]
+[connection signal="pressed" from="controls/search" to="." method="_on_search_pressed"]
+[connection signal="pressed" from="controls/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="controls/open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="controls/add_container" to="." method="_on_add_container_pressed"]
+[connection signal="item_selected" from="controls/layout" to="." method="_on_layout_item_selected"]
+[connection signal="pressed" from="controls/close" to="." method="_on_close_pressed"]
 [connection signal="file_selected" from="file_dialog" to="." method="_on_file_dialog_file_selected"]
