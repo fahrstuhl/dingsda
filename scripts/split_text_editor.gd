@@ -10,10 +10,13 @@ func _ready():
 	$file_dialog.current_dir = Global.get_setting("library_path")
 
 func get_title():
+	var title = "Markdown Editor"
 	if not current_artefact == null:
-		return current_artefact.path
-	else:
-		return "Markdown Editor"
+		title = current_artefact.path
+		var library_path = Global.get_setting("library_path")
+		if title.begins_with(library_path):
+			title = "<library_path>" + title.trim_prefix(library_path)
+	return title
 
 func set_artefact(artefact_path: String):
 	active = false
