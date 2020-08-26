@@ -22,7 +22,7 @@ visible = false
 margin_left = 698.0
 margin_right = 862.0
 margin_bottom = 45.0
-hint_tooltip = "Search for artefacts in your library."
+hint_tooltip = "Search for artefacts in your library"
 size_flags_horizontal = 3
 placeholder_text = "Search"
 caret_blink = true
@@ -32,6 +32,7 @@ visible = false
 margin_left = 838.0
 margin_right = 862.0
 margin_bottom = 37.0
+hint_tooltip = "Start search"
 text = "▶"
 
 [node name="settings" type="Button" parent="controls"]
@@ -39,6 +40,7 @@ visible = false
 margin_left = 838.0
 margin_right = 862.0
 margin_bottom = 37.0
+hint_tooltip = "Open settings"
 text = "⚙"
 
 [node name="open" type="Button" parent="controls"]

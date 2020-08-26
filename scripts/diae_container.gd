@@ -114,4 +114,5 @@ func _on_search_bar_text_entered(new_text):
 	search(new_text)
 
 func search(text):
-	pass
+	var results = Search.search(text)
+	print(results)

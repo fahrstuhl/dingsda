@@ -41,5 +41,16 @@ func render():
 	bbcode_text = Markdown.convert_markdown(text)
 	emit_signal("rendered")
 
+func get_metadata():
+	var metadata = {}
+	var regex = RegEx.new()
+	regex.compile("\\[_metadata_:(?P<key>.*)\\]: <(?P<value>.*)>")
+	var results = regex.search_all(text)
+	for result in results:
+		var key = result.get_string("key")
+		var value = result.get_string("value")
+		metadata[key] = value
+	return metadata
+
 static func get_type_name():
 	return "ArtefactMarkdown"

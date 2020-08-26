@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/artefact_settings.gd"
 }, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://git_api.gdns"
-}, {
 "base": "Node",
 "class": "Markdown",
 "language": "GDScript",
@@ -38,7 +33,6 @@ _global_script_class_icons={
 "Artefact": "",
 "ArtefactMarkdown": "",
 "ArtefactSettings": "",
-"GitAPI": "",
 "Markdown": ""
 }
 
@@ -57,6 +51,7 @@ mix_rate=48000
 
 Global="*res://scripts/global.gd"
 ArtefactManager="*res://scripts/artefact_manager.gd"
+Search="*res://scripts/search.gd"
 
 [display]
 
@@ -66,7 +61,7 @@ window/ios/hide_home_indicator=false
 
 [gdnative]
 
-singletons=[ "res://git_api.gdnlib" ]
+singletons=[  ]
 
 [gui]
 
