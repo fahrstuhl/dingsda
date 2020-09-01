@@ -1,6 +1,14 @@
 extends Node
 class_name Util
 
+static func resolve_path(rel_path: String, origin: String):
+	if not rel_path.is_rel_path():
+		return normalize_path(rel_path)
+	var base = origin.get_base_dir()
+	var resolved = normalize_path(base.plus_file(rel_path))
+	print("Resolved\n{0}\nfrom\n{1}\nto\n{2}\n".format([rel_path, origin, resolved]))
+	return resolved
+
 static func normalize_path(path: String):
 	var root
 	var abs_path
@@ -21,6 +29,10 @@ static func normalize_path(path: String):
 	var abs_without_root = abs_path.trim_prefix(root)
 	var parts = Array(abs_without_root.split("/", false))
 	var norm_path = root
+	var dot = parts.find(".")
+	while dot != -1:
+		parts.remove(dot)
+		dot = parts.find(".")
 	var dotdot = parts.find("..")
 	while dotdot != -1:
 		parts.remove(dotdot)

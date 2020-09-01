@@ -7,7 +7,7 @@ func search(string, path):
 	var content_searchable = filter_content_searchable(abs_names)
 	var metadata_searchable = filter_metadata_searchable(abs_names)
 	var results = {
-		"files": search_filenames(string, filenames),
+		"files": search_filenames(string, filenames, abs_path),
 		"metadata": search_metadata(string, metadata_searchable),
 		"content": search_content(string, content_searchable),
 	}
@@ -37,11 +37,11 @@ func prefix_filenames(filenames, prefix):
 		abs_names.append(prefix.plus_file(file))
 	return abs_names
 
-func search_filenames(string, filenames):
+func search_filenames(string, filenames, abs_path):
 	var results = []
 	for file in filenames:
 		if file.findn(string) != -1:
-			results.append(file)
+			results.append(abs_path.plus_file(file))
 	return results
 
 func search_content(string, filenames):
@@ -58,10 +58,11 @@ func search_metadata(string, filenames):
 		var artefact = ArtefactManager.load_artefact(path, false)
 		var metadata = artefact.get_metadata()
 		for key in metadata:
-			if metadata[key].findn(string) != -1:
+			var value = metadata[key]
+			if value.findn(string) != -1:
 				if not results.has(path):
-					results[path] = []
-				results[path].append(key)
+					results[path] = {}
+				results[path][key] = value
 	return results
 
 func filter_content_searchable(filenames):

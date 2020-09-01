@@ -7,7 +7,12 @@ var section = "Main"
 
 func set_default_settings():
 	config.load("res:///defaults/settings.ini")
-	set_setting("library_path", OS.get_user_data_dir())
+	var lib = OS.get_user_data_dir().plus_file("wiki")
+	var dir = Directory.new()
+	if not dir.dir_exists(lib):
+		if dir.make_dir(lib) != OK:
+			printerr("Can't create wiki directory at {0}".format([lib]))
+	set_setting("library_path", lib)
 
 func add_missing_settings():
 	for key in defaults.get_section_keys(section):
@@ -27,6 +32,9 @@ func init(file_path):
 		set_default_settings()
 	load_content()
 	add_missing_settings()
+
+static func is_read_only():
+	return false
 
 func set_setting(key: String, value):
 	print("setting {0} to {1}".format([key, value]))

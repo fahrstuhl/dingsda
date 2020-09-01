@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/diae_container.gd" type="Script" id=1]
-[ext_resource path="res://scenes/split_text_editor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/rich_text_label.tscn" type="PackedScene" id=2]
 
 [node name="diae_container" type="VBoxContainer"]
 anchor_right = 1.0
@@ -132,11 +132,8 @@ current_path = "/home/fahrstuhl/projects/diae/godiae/"
 margin_right = 16.0
 margin_bottom = 16.0
 
-[node name="editor_container" parent="search_panel" instance=ExtResource( 2 )]
-margin_left = 8.0
+[node name="rich_text_label" parent="search_panel" instance=ExtResource( 2 )]
 margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
 [connection signal="text_entered" from="controls/search_bar" to="." method="_on_search_bar_text_entered"]
 [connection signal="pressed" from="controls/search" to="." method="_on_search_pressed"]
 [connection signal="pressed" from="controls/settings" to="." method="_on_settings_pressed"]
@@ -145,3 +142,4 @@ margin_bottom = -8.0
 [connection signal="item_selected" from="controls/layout" to="." method="_on_layout_item_selected"]
 [connection signal="pressed" from="controls/close" to="." method="_on_close_pressed"]
 [connection signal="file_selected" from="file_dialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="meta_clicked" from="search_panel/rich_text_label" to="." method="_on_rich_text_label_meta_clicked"]

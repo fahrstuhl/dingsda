@@ -11,6 +11,8 @@ func get_artefact_type(path: String):
 				type = ArtefactSettings
 			else:
 				type = Artefact
+		"bmp", "dds", "exr", "hdr", "jpg", "jpeg", "png", "tga", "svg", "svgz", "webp":
+			type = ArtefactImage
 		_:
 			type = Artefact
 	return type
@@ -27,6 +29,10 @@ func load_artefact(path: String, update_recent: bool = true):
 	path = Util.normalize_path(path)
 	var artefact = find_existing_artefact(path)
 	var type = get_artefact_type(path)
+	var file = File.new()
+	if not file.file_exists(path):
+		if type.is_read_only():
+			type = Artefact
 	if not artefact:
 		artefact = create_artefact(path, type)
 		add_child(artefact)

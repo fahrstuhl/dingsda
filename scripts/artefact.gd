@@ -28,6 +28,10 @@ func load_content():
 func render():
 	pass
 
+#virtual
+static func is_read_only():
+	return true
+
 func _ready():
 	add_child(autosave_timer)
 	add_child(idle_save_timer)

@@ -127,18 +127,33 @@ func search(text):
 	}
 	for path in results["files"]:
 		formatted_results["files"] += "* [{title}](<{link}>)\n".format({
-			"title": path.trim_prefix(lib),
+			"title": path.trim_prefix(lib).trim_prefix("/"),
 			"link": path,
 		})
-#	for artefact in recent:
-#		var title = artefact.get_file()
-#		var link = artefact
-#		recent_string += "1. [{title}](<{link}>)\n".format({"title": title, "link": link})
+	for path in results["metadata"]:
+		formatted_results["metadata"] += "* [{title}](<{link}>)\n".format({
+			"title": path.trim_prefix(lib).trim_prefix("/"),
+			"link": path,
+		})
+		var data = results["metadata"][path]
+		for key in data:
+			var value = data[key]
+			formatted_results["metadata"] += "  * **{key}:** {value}\n".format({
+			"key": key,
+			"value": value,
+			})
+	for path in results["content"]:
+		formatted_results["content"] += "* [{title}](<{link}>)\n".format({
+			"title": path.trim_prefix(lib).trim_prefix("/"),
+			"link": path,
+		})
 	var formatted = template.format(formatted_results)
 	file.store_string(formatted)
-	$search_panel/editor_container.set_artefact("user://search_results.md")
-	$search_panel/editor_container/buttons/close.hide()
-	$search_panel/editor_container.active = false
-	$search_panel/editor_container.current_artefact.text = formatted
-	$search_panel/editor_container.current_artefact.render()
+	$search_panel/rich_text_label.set_artefact("user://search_results.md")
+	$search_panel/rich_text_label.current_artefact.text = formatted
+	$search_panel/rich_text_label.current_artefact.render()
 	$search_panel.popup_centered_ratio()
+
+
+func _on_rich_text_label_meta_clicked(meta):
+	open_artefact_markdown(meta)

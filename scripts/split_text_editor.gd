@@ -21,10 +21,13 @@ func get_title():
 func set_artefact(artefact_path: String):
 	active = false
 	if ArtefactManager.is_valid_artefact_of_type(artefact_path, ArtefactMarkdown) == OK:
+		var prev_artefact = current_artefact
 		current_artefact = ArtefactManager.load_artefact(artefact_path)
 		assert(current_artefact is ArtefactMarkdown)
+		if prev_artefact != null:
+			prev_artefact.disconnect("changed", self, "_on_artefact_changed")
 		current_artefact.connect("changed", self, "_on_artefact_changed")
-		current_artefact.connect("rendered", self, "_on_artefact_rendered")
+		$editor/rich_text_label.set_artefact(artefact_path)
 		$editor/text_edit.text = current_artefact.text
 		_on_text_edit_focus_exited()
 		_on_text_edit_text_changed()
@@ -42,9 +45,6 @@ func _on_text_edit_text_changed():
 func _on_artefact_changed():
 	if $editor/text_edit.readonly:
 		$editor/text_edit.text = current_artefact.text
-
-func _on_artefact_rendered():
-	$editor/rich_text_label.bbcode_text = current_artefact.bbcode_text
 
 func _on_text_edit_focus_exited():
 	$editor/text_edit.readonly = true
@@ -78,8 +78,10 @@ func _on_open_pressed():
 func _on_rich_text_label_meta_clicked(meta: String):
 	var library_path = Global.get_setting("library_path")
 	if meta.begins_with("#"):
-		var artefact_name = "{0}.md".format([meta])
-		artefact_name.erase(0, 1)
+		var artefact_name = meta
+		if meta.get_extension() == "":
+			artefact_name = "{0}.md".format([meta])
+		artefact_name.erase(0, 1) # removes `#`
 		var path = library_path.plus_file(artefact_name)
 		emit_signal("open_artefact", path)
 	elif meta.begins_with("user://"):
@@ -87,4 +89,12 @@ func _on_rich_text_label_meta_clicked(meta: String):
 	elif meta.begins_with(library_path):
 		emit_signal("open_artefact", meta)
 	else:
-		OS.shell_open(meta)
+		var path = meta
+		if meta.is_rel_path():
+			path = Util.normalize_path(library_path.plus_file(meta))
+			path = "file://".plus_file(path)
+			printerr("""Relative path handling is still wrong because relative 
+			paths are usually relative to the document they're linked in,
+			which is not necessarily the library path.""")
+			print(path)
+		OS.shell_open(path)
