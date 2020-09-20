@@ -3,8 +3,7 @@
 [ext_resource path="res://scripts/editor_container.gd" type="Script" id=1]
 [ext_resource path="res://scenes/rich_text_label.tscn" type="PackedScene" id=2]
 
-
-[node name="diae_container" type="VBoxContainer"]
+[node name="editor_container" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -126,8 +125,8 @@ margin_right = 645.0
 margin_bottom = 248.0
 mode_overrides_title = false
 access = 2
-current_dir = "/home/fahrstuhl/projects/diae/godiae"
-current_path = "/home/fahrstuhl/projects/diae/godiae/"
+current_dir = "/home/fahrstuhl/projects/diae/dingsda"
+current_path = "/home/fahrstuhl/projects/diae/dingsda/"
 
 [node name="search_panel" type="PopupPanel" parent="."]
 margin_right = 16.0

@@ -52,7 +52,7 @@ func _on_close_pressed():
 		get_tree().quit()
 
 func _on_add_container_pressed():
-	var container = load("res://scenes/diae_container.tscn").instance()
+	var container = load("res://scenes/editor_container.tscn").instance()
 	add_container(container)
 
 func _on_open_pressed():
