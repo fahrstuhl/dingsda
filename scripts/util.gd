@@ -28,7 +28,7 @@ static func normalize_path(path: String):
 			root = "res://"
 	var abs_without_root = abs_path.trim_prefix(root)
 	var parts = Array(abs_without_root.split("/", false))
-	var norm_path = root
+	var norm_path: String = root
 	var dot = parts.find(".")
 	while dot != -1:
 		parts.remove(dot)
@@ -40,5 +40,5 @@ static func normalize_path(path: String):
 		dotdot = parts.find("..")
 	for part in parts:
 		norm_path = norm_path.plus_file(part)
-	# print("Original Path:\n{0}\nAbsolute Path:\n{1}\nNormalized Path:\n{2}".format([path, abs_path, norm_path]))
+#	print("Original Path:\n{0}\nAbsolute Path:\n{1}\nNormalized Path:\n{2}".format([path, abs_path, norm_path]))
 	return norm_path

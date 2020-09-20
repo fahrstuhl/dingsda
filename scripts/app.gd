@@ -14,8 +14,9 @@ func resize():
 
 func create_and_open_recent_artefacts_document():
 	var file = File.new()
-	file.open("res:///defaults/recent_artefacts.md.template", File.READ)
+	file.open("res://defaults/recent_artefacts.md.template", File.READ)
 	var template = file.get_as_text()
+	print(template)
 	file.close()
 	var recent = Global.get_setting("recent_artefacts")
 	var recent_string = ""
@@ -24,7 +25,7 @@ func create_and_open_recent_artefacts_document():
 		var link = artefact
 		recent_string += "1. [{title}](<{link}>)\n".format({"title": title, "link": link})
 	var formatted = template.format({"recent_documents": recent_string})
-	file.open("user:///recent_artefacts.md", File.WRITE)
+	file.open("user://recent_artefacts.md", File.WRITE)
 	file.store_string(formatted)
 	file.close()
-	$diae_container.open_artefact("user:///recent_artefacts.md")
+	$diae_container.open_artefact("user://recent_artefacts.md")

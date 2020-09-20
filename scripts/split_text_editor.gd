@@ -86,6 +86,8 @@ func _on_rich_text_label_meta_clicked(meta: String):
 		emit_signal("open_artefact", path)
 	elif meta.begins_with("user://"):
 		emit_signal("open_artefact", meta)
+	elif meta.begins_with("res://"):
+		emit_signal("open_artefact", meta)
 	elif meta.begins_with(library_path):
 		emit_signal("open_artefact", meta)
 	else:

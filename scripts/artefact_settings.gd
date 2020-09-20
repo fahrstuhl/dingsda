@@ -37,7 +37,7 @@ static func is_read_only():
 	return false
 
 func set_setting(key: String, value):
-	print("setting {0} to {1}".format([key, value]))
+#	print("setting {0} to {1}".format([key, value]))
 	config.set_value(section, key, value)
 	store_content()
 	emit_signal("changed")

@@ -117,7 +117,7 @@ func search(text):
 	var lib = Global.get_setting("library_path")
 	var results = Search.search(text, Global.get_setting("library_path"))
 	var file = File.new()
-	file.open("res:///defaults/search_results.md.template", File.READ)
+	file.open("res://defaults/search_results.md.template", File.READ)
 	var template = file.get_as_text()
 	file.close()
 	var formatted_results = {

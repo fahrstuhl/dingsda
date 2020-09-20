@@ -5,7 +5,7 @@ var current_artefact: ArtefactMarkdown
 func _ready():
 	# TODO: this doesn't work yet for some reason
 	var panel_theme = get_node("/root/app").theme.get_stylebox("TooltipPanel", "panel")
-	print(panel_theme)
+#	print(panel_theme)
 	$meta_hover_panel.set("custom_styles/panel", panel_theme)
 
 func set_artefact(artefact_path: String):

@@ -53,30 +53,30 @@ static func get_type_name():
 
 func render_content():
 	render_timer.stop()
-	print("rendering")
+#	print("rendering")
 	render()
 
 func store_content():
-	print("saving")
+#	print("saving")
 	autosave_timer.stop()
 	idle_save_timer.stop()
 	write_to_file()
 
 func _on_changed():
-	print("starting idle save timer")
+#	print("starting idle save timer")
 	start_idle_save_timer()
 	if autosave_timer.is_stopped():
 		start_autosave_timer()
-		print("starting autosave timer")
-	print("start rendering timer")
+#		print("starting autosave timer")
+#	print("start rendering timer")
 	start_render_timer()
 
 func _on_autosave_timeout():
-	print("autosaving")
+#	print("autosaving")
 	store_content()
 
 func _on_tree_exiting():
-	print("exit called")
+#	print("exit called")
 	store_content()
 
 func _on_render_timeout():

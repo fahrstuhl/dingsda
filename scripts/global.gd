@@ -12,6 +12,8 @@ func get_setting(path):
 func add_recent_artefact(path):
 	if path == "user://recent_artefacts.md":
 		return
+	elif path == "user://search_results.md":
+		return
 	var recent: Array = get_setting("recent_artefacts")
 	var count = recent.count(path)
 	for i in range(count):
