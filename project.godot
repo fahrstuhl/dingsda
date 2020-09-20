@@ -62,7 +62,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="godiae"
+config/name="dingsda"
 run/main_scene="res://scenes/app.tscn"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 

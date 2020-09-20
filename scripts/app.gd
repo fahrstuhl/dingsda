@@ -10,7 +10,7 @@ func _ready():
 
 func resize():
 	print("resizing")
-	$diae_container.rect_size = get_viewport_rect().size
+	$editor_container.rect_size = get_viewport_rect().size
 
 func create_and_open_recent_artefacts_document():
 	var file = File.new()
@@ -28,4 +28,4 @@ func create_and_open_recent_artefacts_document():
 	file.open("user://recent_artefacts.md", File.WRITE)
 	file.store_string(formatted)
 	file.close()
-	$diae_container.open_artefact("user://recent_artefacts.md")
+	$editor_container.open_artefact("user://recent_artefacts.md")

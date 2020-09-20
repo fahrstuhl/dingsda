@@ -38,6 +38,6 @@ size_flags_vertical = 3
 [node name="library_path" parent="settings_container" instance=ExtResource( 1 )]
 anchor_right = 0.0
 setting_name = "library_path"
-setting_description = "Path to godiae document library."
+setting_description = "Path to dingsda document library."
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="path_changed" from="settings_container/library_path" to="." method="_on_library_path_path_changed"]
