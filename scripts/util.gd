@@ -10,6 +10,8 @@ static func resolve_path(rel_path: String, origin: String):
 	return resolved
 
 static func normalize_path(path: String):
+	var win_drive_regex = RegEx.new()
+	win_drive_regex.compile("[a-zA-Z]:/")
 	var root
 	var abs_path
 	if path.is_rel_path():
@@ -20,7 +22,9 @@ static func normalize_path(path: String):
 		file.close()
 	elif path.is_abs_path():
 		abs_path = path
-		if path.begins_with("/"):
+		if win_drive_regex.search(path.substr(0, 3)) != null:
+			root = path.substr(0,3)
+		elif path.begins_with("/"):
 			root = "/"
 		elif path.begins_with("user://"):
 			root = "user://"
