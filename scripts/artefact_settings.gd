@@ -6,7 +6,8 @@ var defaults = ConfigFile.new()
 var section = "Main"
 
 func set_default_settings():
-	config.load("res:///defaults/settings.ini")
+	if config.load("res://defaults/settings.ini") != OK:
+		printerr("failed to load defaults for config from res://")
 	var lib = OS.get_user_data_dir().plus_file("wiki")
 	var dir = Directory.new()
 	if not dir.dir_exists(lib):
@@ -24,7 +25,8 @@ func get_default_setting(key):
 	return defaults.get_value(section, key)
 
 func init(file_path):
-	defaults.load("res:///defaults/settings.ini")
+	if defaults.load("res://defaults/settings.ini") != OK:
+		printerr("failed to load defaults for defaults from res://")
 	path = file_path
 	config = ConfigFile.new()
 	var file = File.new()
@@ -53,3 +55,10 @@ func write_to_file():
 	var error = config.save(path)
 	if error != OK:
 		printerr("Can't save setting.")
+
+func print_config(config_name, config):
+	print("Printing config '{0}': {1}".format([config_name, config]))
+	for section in config.get_sections():
+		print("  Section {0} contains:".format([section]))
+		for key in config.get_section_keys(section):
+			print("    {0}: {1}".format([key, config.get_value(section, key)]))
