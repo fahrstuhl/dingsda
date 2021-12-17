@@ -18,7 +18,6 @@ func get_artefact_type(path: String):
 	return type
 
 func is_valid_artefact_of_type(path, requested_type):
-	var file = File.new()
 	var type = get_artefact_type(path)
 	if requested_type.get_type_name() != type.get_type_name():
 		push_error("Type mismatch. Requested {0}, got {1}.".format([requested_type.get_type_name(), type.get_type_name()]))
