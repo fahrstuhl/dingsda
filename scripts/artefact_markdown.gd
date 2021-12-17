@@ -2,7 +2,8 @@ extends Artefact
 
 class_name ArtefactMarkdown
 
-var text: String = "" setget set_text
+var text: String = "":
+	set = set_text
 var bbcode_text: String = ""
 var file: File
 
