@@ -52,7 +52,7 @@ func _on_close_pressed():
 		get_tree().quit()
 
 func _on_add_container_pressed():
-	var container = load("res://scenes/editor_container.tscn").instance()
+	var container = load("res://scenes/editor_container.tscn").instantiate()
 	add_container(container)
 
 func _on_open_pressed():
@@ -93,7 +93,7 @@ func open_artefact(path):
 			return
 
 func open_artefact_markdown(path):
-	var editor = load("res://scenes/split_text_editor.tscn").instance()
+	var editor = load("res://scenes/split_text_editor.tscn").instantiate()
 	add_container(editor)
 	editor.open_artefact.connect(_on_open_artefact_received)
 	editor.name_changed.connect(_on_editor_name_changed)
@@ -103,15 +103,12 @@ func get_title():
 	return "Container"
 
 func _on_settings_pressed():
-	var editor = load("res://scenes/settings_editor.tscn").instance()
+	var editor = load("res://scenes/settings_editor.tscn").instantiate()
 	add_container(editor)
 
 func _on_search_pressed():
 	var text = $controls/search_bar.text
 	search(text)
-
-func _on_search_bar_text_entered(new_text):
-	search(new_text)
 
 func search(text):
 	var lib = Global.get_setting("library_path")
@@ -157,3 +154,7 @@ func search(text):
 
 func _on_rich_text_label_meta_clicked(meta):
 	open_artefact_markdown(meta)
+
+
+func _on_search_bar_text_submitted(new_text):
+	search(new_text)

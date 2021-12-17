@@ -19,7 +19,7 @@ func add_recent_artefact(path):
 	for i in range(count):
 		var old_index = recent.find(path)
 		if old_index != -1:
-			recent.remove(old_index)
+			recent.remove_at(old_index)
 	recent.push_front(path)
 	if len(recent) > get_setting("num_of_recent_artefacts"):
 		recent.pop_back()

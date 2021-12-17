@@ -1,11 +1,11 @@
-tool
+# tool
 extends ResourceFormatLoader
 class_name ImageFileLoader
 
 func handles_type(typename: String):
 	return typename == "ImageTexture"
 
-func load(path, original_path):
+func _load(path: String, _original_path: String, _use_sub_threads: bool, _cache_mode: int):
 	print("Custom loader called.")
 	var image = Image.new()
 	var texture = ImageTexture.new()
@@ -24,4 +24,4 @@ func get_resource_type(path):
 		return ""
 
 func get_recognized_extensions():
-	return PoolStringArray(["bmp", "dds", "exr", "hdr", "jpg", "jpeg", "png", "tga", "svg", "svgz", "webp"])
+	return Array(["bmp", "dds", "exr", "hdr", "jpg", "jpeg", "png", "tga", "svg", "svgz", "webp"])

@@ -32,22 +32,22 @@ func set_artefact(artefact_path: String):
 		_on_text_edit_focus_exited()
 		_on_text_edit_text_changed()
 		active = true
-		name_changed()
+		change_name()
 
-func name_changed():
+func change_name():
 	$buttons/title.set_text(get_title())
 	emit_signal("name_changed")
 
 func _on_text_edit_text_changed():
-	if not $editor/text_edit.readonly:
+	if $editor/text_edit.editable:
 		current_artefact.text = $editor/text_edit.text
 
 func _on_artefact_changed():
-	if $editor/text_edit.readonly:
+	if not $editor/text_edit.editable:
 		$editor/text_edit.text = current_artefact.text
 
 func _on_text_edit_focus_exited():
-	$editor/text_edit.readonly = true
+	$editor/text_edit.editable = false
 	$editor/text_edit.hide()
 	$editor/rich_text_label.show()
 	current_artefact.render_content()
@@ -55,13 +55,13 @@ func _on_text_edit_focus_exited():
 
 func _on_rich_text_label_gui_input(event):
 	if active:
-		var doubleclick = event is InputEventMouseButton and event.is_pressed() and event.doubleclick
+		var doubleclick = event is InputEventMouseButton and event.is_pressed() and event.is_double_click()
 		var two_finger_touch = event is InputEventScreenTouch and event.is_pressed() and event.index == 1
 		if doubleclick or two_finger_touch:
 			start_editing()
 
 func start_editing():
-	$editor/text_edit.readonly = false
+	$editor/text_edit.editable = true
 	$editor/rich_text_label.hide()
 	$editor/text_edit.show()
 	$editor/text_edit.grab_focus()
@@ -92,7 +92,7 @@ func _on_rich_text_label_meta_clicked(meta: String):
 		emit_signal("open_artefact", meta)
 	else:
 		var path = meta
-		if meta.is_rel_path():
+		if meta.is_relative_path():
 			path = Util.normalize_path(library_path.plus_file(meta))
 			path = "file://".plus_file(path)
 			printerr("""Relative path handling is still wrong because relative 

@@ -19,7 +19,7 @@ func set_artefact(artefact_path: String):
 		current_artefact.render()
 
 func _on_artefact_rendered():
-	bbcode_text = current_artefact.bbcode_text
+	text = current_artefact.bbcode_text
 
 func _on_rich_text_label_meta_hover_started(meta):
 	$meta_hover_panel/meta_hover_text.text = meta

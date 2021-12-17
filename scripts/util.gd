@@ -2,7 +2,7 @@ extends Node
 class_name Util
 
 static func resolve_path(rel_path: String, origin: String):
-	if not rel_path.is_rel_path():
+	if not rel_path.is_relative_path():
 		return normalize_path(rel_path)
 	var base = origin.get_base_dir()
 	var resolved = normalize_path(base.plus_file(rel_path))
@@ -14,13 +14,13 @@ static func normalize_path(path: String):
 	win_drive_regex.compile("[a-zA-Z]:/")
 	var root
 	var abs_path
-	if path.is_rel_path():
+	if path.is_relative_path():
 		root = "/"
 		var file = File.new()
 		file.open(path, File.READ)
 		abs_path = file.get_path_absolute()
 		file.close()
-	elif path.is_abs_path():
+	elif path.is_absolute_path():
 		abs_path = path
 		if win_drive_regex.search(path.substr(0, 3)) != null:
 			root = path.substr(0,3)
