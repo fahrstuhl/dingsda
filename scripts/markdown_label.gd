@@ -3,10 +3,7 @@ extends RichTextLabel
 var current_artefact: ArtefactMarkdown
 
 func _ready():
-	# TODO: this doesn't work yet for some reason
-	var panel_theme = get_node("/root/app").theme.get_stylebox("TooltipPanel", "panel")
-#	print(panel_theme)
-	$meta_hover_panel.set("custom_styles/panel", panel_theme)
+	pass
 
 func set_artefact(artefact_path: String):
 	if ArtefactManager.is_valid_artefact_of_type(artefact_path, ArtefactMarkdown) == OK:
