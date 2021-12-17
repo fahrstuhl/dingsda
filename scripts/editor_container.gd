@@ -84,13 +84,12 @@ func refresh_tab_titles():
 
 func open_artefact(path):
 	var type = ArtefactManager.get_artefact_type(path)
-	match type:
-		ArtefactMarkdown:
-			open_artefact_markdown(path)
-		ArtefactSettings:
-			_on_settings_pressed()
-		_:
-			return
+	if type == ArtefactMarkdown:
+		open_artefact_markdown(path)
+	elif type == ArtefactSettings:
+		_on_settings_pressed()
+	else:
+		return
 
 func open_artefact_markdown(path):
 	var editor = load("res://scenes/split_text_editor.tscn").instantiate()
