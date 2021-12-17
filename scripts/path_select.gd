@@ -1,9 +1,10 @@
 extends HBoxContainer
 
-export var setting_name: String = "some_setting_path"
-export var setting_description: String = "Long description for some setting."
-export var default_value: String = "user://"
-export var current_value: String = "user://" setget set_current_value
+@export var setting_name: String = "some_setting_path"
+@export var setting_description: String = "Long description for some setting."
+@export var default_value: String = "user://"
+@export var current_value: String = "user://":
+	set = set_current_value
 
 signal path_changed(path)
 
