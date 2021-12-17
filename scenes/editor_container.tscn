@@ -1,28 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dindykuocxgo6"]
 
-[ext_resource path="res://scripts/editor_container.gd" type="Script" id=1]
-[ext_resource path="res://scenes/rich_text_label.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" path="res://scripts/editor_container.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://qu8m4to34n3s" path="res://scenes/rich_text_label.tscn" id="2"]
 
 [node name="editor_container" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 1 )
+script = ExtResource( "1" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="controls" type="HBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 37.0
+offset_right = 1024.0
+offset_bottom = 36.0
 alignment = 2
 
 [node name="search_bar" type="LineEdit" parent="controls"]
 visible = false
-margin_left = 698.0
-margin_right = 862.0
-margin_bottom = 45.0
+offset_right = 802.0
+offset_bottom = 43.0
 hint_tooltip = "Search for artefacts in your library"
 size_flags_horizontal = 3
 placeholder_text = "Search"
@@ -30,41 +29,36 @@ caret_blink = true
 
 [node name="search" type="Button" parent="controls"]
 visible = false
-margin_left = 838.0
-margin_right = 862.0
-margin_bottom = 37.0
 hint_tooltip = "Start search"
 text = "▶"
 
 [node name="settings" type="Button" parent="controls"]
 visible = false
-margin_left = 838.0
-margin_right = 862.0
-margin_bottom = 37.0
 hint_tooltip = "Open settings"
 text = "⚙"
 
 [node name="open" type="Button" parent="controls"]
-margin_left = 870.0
-margin_right = 894.0
-margin_bottom = 37.0
+offset_left = 810.0
+offset_right = 850.0
+offset_bottom = 36.0
 hint_tooltip = "Open file in new editor"
 text = "📁"
 
 [node name="add_container" type="Button" parent="controls"]
-margin_left = 902.0
-margin_right = 926.0
-margin_bottom = 37.0
+offset_left = 858.0
+offset_right = 898.0
+offset_bottom = 36.0
 hint_tooltip = "Add a new container"
+theme_override_font_sizes/font_size = 16
 text = "📑"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="layout" type="OptionButton" parent="controls"]
-margin_left = 934.0
-margin_right = 992.0
-margin_bottom = 37.0
+offset_left = 906.0
+offset_right = 980.0
+offset_bottom = 36.0
 hint_tooltip = "Change layout"
 text = "📑"
 __meta__ = {
@@ -72,16 +66,16 @@ __meta__ = {
 }
 
 [node name="close" type="Button" parent="controls"]
-margin_left = 1000.0
-margin_right = 1024.0
-margin_bottom = 37.0
+offset_left = 988.0
+offset_right = 1024.0
+offset_bottom = 36.0
 hint_tooltip = "Close container and all children"
 text = "✖"
 
 [node name="layout_container" type="TabContainer" parent="."]
-margin_top = 45.0
-margin_right = 1024.0
-margin_bottom = 600.0
+offset_top = 44.0
+offset_right = 1024.0
+offset_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tabs_visible = false
@@ -89,52 +83,49 @@ tabs_visible = false
 [node name="tabbed" type="TabContainer" parent="layout_container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 16.0
-margin_right = -8.0
-margin_bottom = -8.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
 
 [node name="vertical" type="VBoxContainer" parent="layout_container"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 16.0
-margin_right = -8.0
-margin_bottom = -8.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 1
+theme_override_constants/separation = 1
 alignment = 1
 
 [node name="horizontal" type="HBoxContainer" parent="layout_container"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 16.0
-margin_right = -8.0
-margin_bottom = -8.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 1
+theme_override_constants/separation = 1
 alignment = 1
 
 [node name="file_dialog" type="FileDialog" parent="."]
-margin_right = 645.0
-margin_bottom = 248.0
 mode_overrides_title = false
 access = 2
-current_dir = "/home/fahrstuhl/projects/diae/dingsda"
-current_path = "/home/fahrstuhl/projects/diae/dingsda/"
+current_dir = "/home/user/Godot/dingsda"
+current_path = "/home/user/Godot/dingsda/"
 
 [node name="search_panel" type="PopupPanel" parent="."]
-margin_right = 16.0
-margin_bottom = 16.0
 
-[node name="rich_text_label" parent="search_panel" instance=ExtResource( 2 )]
-margin_top = 8.0
-[connection signal="text_entered" from="controls/search_bar" to="." method="_on_search_bar_text_entered"]
+[node name="rich_text_label" parent="search_panel" instance=ExtResource( "2" )]
+theme_override_font_sizes/normal_font_size = 16
+
+[connection signal="text_submitted" from="controls/search_bar" to="." method="_on_search_bar_text_submitted"]
 [connection signal="pressed" from="controls/search" to="." method="_on_search_pressed"]
 [connection signal="pressed" from="controls/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="controls/open" to="." method="_on_open_pressed"]

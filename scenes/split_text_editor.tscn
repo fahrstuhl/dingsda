@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bhkrao4jt62em"]
 
-[ext_resource path="res://scripts/split_text_editor.gd" type="Script" id=1]
-[ext_resource path="res://fonts/app.theme" type="Theme" id=2]
-[ext_resource path="res://scenes/rich_text_label.tscn" type="PackedScene" id=3]
+[ext_resource type="Script" path="res://scripts/split_text_editor.gd" id="1"]
+[ext_resource type="Theme" uid="uid://j300i64p46q" path="res://fonts/app.theme" id="2"]
+[ext_resource type="PackedScene" uid="uid://qu8m4to34n3s" path="res://scenes/rich_text_label.tscn" id="3"]
 
 [node name="editor_container" type="VBoxContainer"]
 anchor_right = 1.0
@@ -10,76 +10,75 @@ anchor_bottom = 1.0
 focus_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 1 )
+script = ExtResource( "1" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="buttons" type="HBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 42.0
+offset_right = 1024.0
+offset_bottom = 35.0
 size_flags_horizontal = 3
 alignment = 2
 
 [node name="title" type="Label" parent="buttons"]
-margin_left = 936.0
-margin_top = 8.0
-margin_right = 936.0
-margin_bottom = 33.0
+offset_left = 927.0
+offset_top = 6.0
+offset_right = 928.0
+offset_bottom = 29.0
 hint_tooltip = "Path of current document."
 
 [node name="open" type="Button" parent="buttons"]
-margin_left = 944.0
-margin_right = 980.0
-margin_bottom = 42.0
+offset_left = 936.0
+offset_right = 976.0
+offset_bottom = 35.0
 hint_tooltip = "Open file"
-theme = ExtResource( 2 )
+theme = ExtResource( "2" )
 text = "📁"
 
 [node name="close" type="Button" parent="buttons"]
-margin_left = 988.0
-margin_right = 1024.0
-margin_bottom = 42.0
+offset_left = 984.0
+offset_right = 1024.0
+offset_bottom = 35.0
 hint_tooltip = "Close editor"
-theme = ExtResource( 2 )
+theme = ExtResource( "2" )
 text = "✖"
 
 [node name="editor" type="TabContainer" parent="."]
-margin_top = 50.0
-margin_right = 1024.0
-margin_bottom = 600.0
+offset_top = 43.0
+offset_right = 1024.0
+offset_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tabs_visible = false
 
-[node name="rich_text_label" parent="editor" instance=ExtResource( 3 )]
+[node name="rich_text_label" parent="editor" instance=ExtResource( "3" )]
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
 
 [node name="text_edit" type="TextEdit" parent="editor"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 16.0
-margin_right = -8.0
-margin_bottom = -8.0
-readonly = true
-fold_gutter = true
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
 highlight_all_occurrences = true
-smooth_scrolling = true
-wrap_enabled = true
 caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="file_dialog" type="FileDialog" parent="."]
-margin_right = 645.0
-margin_bottom = 248.0
 mode_overrides_title = false
 access = 2
-filters = PoolStringArray( "*.txt ; Text Files", "*.md ; Markdown Documents" )
-current_dir = "/home/fahrstuhl/projects/diae/dingsda"
-current_path = "/home/fahrstuhl/projects/diae/dingsda/"
+filters = PackedStringArray("*.txt ; Text Files", "*.md ; Markdown Documents")
+current_dir = "/home/user/Godot/dingsda"
+current_path = "/home/user/Godot/dingsda/"
+
 [connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="gui_input" from="editor/rich_text_label" to="." method="_on_rich_text_label_gui_input"]

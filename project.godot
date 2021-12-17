@@ -6,55 +6,49 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
-_global_script_classes=[ {
+_global_script_classes=[{
 "base": "Node",
-"class": "Artefact",
-"language": "GDScript",
+"class": &"Artefact",
+"language": &"GDScript",
 "path": "res://scripts/artefact.gd"
 }, {
 "base": "Artefact",
-"class": "ArtefactImage",
-"language": "GDScript",
+"class": &"ArtefactImage",
+"language": &"GDScript",
 "path": "res://scripts/artefact_image.gd"
 }, {
 "base": "Artefact",
-"class": "ArtefactMarkdown",
-"language": "GDScript",
+"class": &"ArtefactMarkdown",
+"language": &"GDScript",
 "path": "res://scripts/artefact_markdown.gd"
 }, {
 "base": "Artefact",
-"class": "ArtefactSettings",
-"language": "GDScript",
+"class": &"ArtefactSettings",
+"language": &"GDScript",
 "path": "res://scripts/artefact_settings.gd"
 }, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://git_api.gdns"
-}, {
 "base": "ResourceFormatLoader",
-"class": "ImageFileLoader",
-"language": "GDScript",
+"class": &"ImageFileLoader",
+"language": &"GDScript",
 "path": "res://scripts/image_file_loader.gd"
 }, {
 "base": "Node",
-"class": "Markdown",
-"language": "GDScript",
+"class": &"Markdown",
+"language": &"GDScript",
 "path": "res://bin/libmarkdown.gd"
 }, {
 "base": "Node",
-"class": "Util",
-"language": "GDScript",
+"class": &"Util",
+"language": &"GDScript",
 "path": "res://scripts/util.gd"
-} ]
+}]
 _global_script_class_icons={
 "Artefact": "",
 "ArtefactImage": "",
 "ArtefactMarkdown": "",
 "ArtefactSettings": "",
-"GitAPI": "",
 "ImageFileLoader": "",
 "Markdown": "",
 "Util": ""
@@ -64,7 +58,9 @@ _global_script_class_icons={
 
 config/name="dingsda"
 run/main_scene="res://scenes/app.tscn"
-boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
+run/low_processor_mode=true
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+config/features=PackedStringArray("4.0")
 
 [audio]
 
@@ -85,7 +81,7 @@ window/ios/hide_home_indicator=false
 
 [gdnative]
 
-singletons=[ "res://git_api.gdnlib" ]
+singletons=[]
 
 [gui]
 
@@ -95,55 +91,55 @@ theme/use_hidpi=true
 
 ui_accept={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_select={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_cancel={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_focus_next={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_focus_prev={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_left={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_right={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_up={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_down={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_page_up={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_page_down={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_home={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 ui_end={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 
 [node]
