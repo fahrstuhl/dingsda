@@ -16,10 +16,11 @@ func search(string, path):
 func get_filenames(path, recursive):
 	var dir: Directory = Directory.new()
 	dir.open(path)
-	dir.list_dir_begin(true, true)
+	dir.include_hidden = true
+	dir.include_navigational = false
+	dir.list_dir_begin()
 	var current = dir.get_next()
 	var filenames = []
-	var dirnames = []
 	while current != "":
 		if recursive and dir.current_is_dir():
 			var sub_path = path.plus_file(current)
