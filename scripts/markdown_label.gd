@@ -14,8 +14,8 @@ func set_artefact(artefact_path: String):
 		current_artefact = ArtefactManager.load_artefact(artefact_path)
 		assert(current_artefact is ArtefactMarkdown)
 		if prev_artefact != null:
-			prev_artefact.disconnect("rendered", self, "_on_artefact_rendered")
-		current_artefact.connect("rendered", self, "_on_artefact_rendered")
+			prev_artefact.rendered.disconnect(_on_artefact_rendered)
+		current_artefact.rendered.connect(_on_artefact_rendered)
 		current_artefact.render()
 
 func _on_artefact_rendered():

@@ -15,7 +15,7 @@ func _ready():
 
 func add_container(child):
 	var current = get_container_for_index($layout_container.current_tab)
-	child.connect("tree_exited", self, "_on_child_closed")
+	child.tree_exited.connect(_on_child_closed)
 	current.add_child(child)
 	refresh_tabs()
 
@@ -95,8 +95,8 @@ func open_artefact(path):
 func open_artefact_markdown(path):
 	var editor = load("res://scenes/split_text_editor.tscn").instance()
 	add_container(editor)
-	editor.connect("open_artefact", self, "_on_open_artefact_received")
-	editor.connect("name_changed", self, "_on_editor_name_changed")
+	editor.open_artefact.connect(_on_open_artefact_received)
+	editor.name_changed.connect(_on_editor_name_changed)
 	editor.set_artefact(path)
 	
 func get_title():

@@ -25,8 +25,8 @@ func set_artefact(artefact_path: String):
 		current_artefact = ArtefactManager.load_artefact(artefact_path)
 		assert(current_artefact is ArtefactMarkdown)
 		if prev_artefact != null:
-			prev_artefact.disconnect("changed", self, "_on_artefact_changed")
-		current_artefact.connect("changed", self, "_on_artefact_changed")
+			prev_artefact.changed.disconnect(_on_artefact_changed)
+		current_artefact.changed.connect(_on_artefact_changed)
 		$editor/rich_text_label.set_artefact(artefact_path)
 		$editor/text_edit.text = current_artefact.text
 		_on_text_edit_focus_exited()

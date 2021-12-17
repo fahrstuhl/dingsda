@@ -4,7 +4,7 @@ func _ready():
 	print(theme)
 	if OS.get_name() == "Android":
 		OS.request_permissions()
-	get_tree().get_root().connect("size_changed", self, "resize")
+	get_tree().get_root().size_changed.connect(resize)
 	resize()
 	create_and_open_recent_artefacts_document()
 

@@ -40,13 +40,13 @@ func _ready():
 	autosave_timer.one_shot = true
 	render_timer.one_shot = true
 	# save after there has been no edit to the document in idle_save_time seconds
-	idle_save_timer.connect("timeout", self, "_on_autosave_timeout")
+	idle_save_timer.timeout.connect(_on_autosave_timeout)
 	# save after there was no save in the last max_time_without_saving seconds
-	autosave_timer.connect("timeout", self, "_on_autosave_timeout")
-	connect("changed", self, "_on_changed")
+	autosave_timer.timeout.connect(_on_autosave_timeout)
+	changed.connect(_on_changed)
 	# save when artefact is being closed
-	connect("tree_exiting", self, "_on_tree_exiting")
-	render_timer.connect("timeout", self, "_on_render_timeout")
+	tree_exiting.connect(_on_tree_exiting)
+	render_timer.timeout.connect(_on_render_timeout)
 
 static func get_type_name():
 	return "Artefact"

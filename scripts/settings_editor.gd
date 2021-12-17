@@ -5,7 +5,7 @@ var settings: ArtefactSettings
 func _ready():
 	settings = ArtefactManager.load_artefact(Global.settings_path)
 	refresh_settings()
-	settings.connect("changed", self, "_on_settings_changed")
+	settings.changed.connect(_on_settings_changed)
 
 func get_title():
 	return "Settings"
