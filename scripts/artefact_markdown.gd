@@ -48,17 +48,17 @@ func render():
 	var imgs = re.search_all(bbcode_text)
 	var replace_links = {}
 	var replace_format = "]_["
-	for img in imgs:
-		var original_path = img.get_string("path")
-		var img_path = Util.resolve_path(img.get_string("path"), path)
-#		if ArtefactManager.is_valid_artefact_of_type(img_path, ArtefactImage):
-#			print("valid image")
-		var img_artefact = ArtefactManager.load_artefact(img_path, false)
-		if img_artefact is ArtefactImage:
-#			print("loaded image:")
-#			print(img_artefact.get_resource_path())
-			replace_links[original_path] = "]" + img_path + "["
-	bbcode_text = bbcode_text.format(replace_links, replace_format)
+#	for img in imgs:
+#		var original_path = img.get_string("path")
+#		var img_path = Util.resolve_path(img.get_string("path"), path)
+##		if ArtefactManager.is_valid_artefact_of_type(img_path, ArtefactImage):
+##			print("valid image")
+#		var img_artefact = ArtefactManager.load_artefact(img_path, false)
+#		if img_artefact is ArtefactImage:
+##			print("loaded image:")
+##			print(img_artefact.get_resource_path())
+#			replace_links[original_path] = "]" + img_path + "["
+#	bbcode_text = bbcode_text.format(replace_links, replace_format)
 #	print(bbcode_text)
 	emit_signal("rendered")
 
