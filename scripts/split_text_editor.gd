@@ -81,7 +81,7 @@ func _on_rich_text_label_meta_clicked(meta: String):
 		var artefact_name = meta
 		if meta.get_extension() == "":
 			artefact_name = "{0}.md".format([meta])
-		artefact_name.erase(0, 1) # removes `#`
+		artefact_name = artefact_name.trim_prefix("#") # removes `#`
 		var path = library_path.plus_file(artefact_name)
 		emit_signal("open_artefact", path)
 	elif meta.begins_with("user://"):
