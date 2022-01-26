@@ -3,6 +3,7 @@ class_name Artefact
 
 signal changed
 signal rendered
+signal request_load
 
 var path: String
 var max_time_without_saving: float = 3*60

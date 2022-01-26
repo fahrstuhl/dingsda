@@ -42,6 +42,7 @@ func load_artefact(path: String, update_recent: bool = true):
 func create_artefact(path: String, type):
 	var artefact = type.new()
 	artefact.init(path)
+	artefact.request_load.connect(load_artefact)
 	return artefact
 
 func find_existing_artefact(path: String):
