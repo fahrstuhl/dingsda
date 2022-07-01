@@ -4,6 +4,10 @@ A personal wiki using [Godot](https://godotengine.org/) and [Github Flavored Mar
 # A Warning
 __This is alpha quality software. Expect data loss. Make backups.__
 
+# Usage Demo
+
+https://user-images.githubusercontent.com/1222635/176937935-7d93362a-6dd3-4af9-8d8e-9b6f7bca5547.mp4
+
 # How To Use
 [Download the most recent release](https://github.com/fahrstuhl/dingsda/releases) and [read the short documentation](./doc/index.md).
 
