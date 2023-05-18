@@ -1,5 +1,10 @@
 extends VBoxContainer
 
+var SPLIT_TEXT_EDITOR = preload("res://scenes/split_text_editor.tscn")
+var SETTINGS_EDITOR = preload("res://scenes/settings_editor.tscn")
+@onready
+var EDITOR_CONTAINER = load("res://scenes/editor_container.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var base_dir = Global.get_setting("library_path")
@@ -15,7 +20,8 @@ func _ready():
 
 func add_container(child):
 	var current = get_container_for_index($layout_container.current_tab)
-	child.tree_exited.connect(_on_child_closed)
+	print(current)
+	child.tree_exiting.connect(_on_child_closed)
 	current.add_child(child)
 	refresh_tabs()
 
@@ -52,7 +58,7 @@ func _on_close_pressed():
 		get_tree().quit()
 
 func _on_add_container_pressed():
-	var container = load("res://scenes/editor_container.tscn").instantiate()
+	var container = EDITOR_CONTAINER.instantiate()
 	add_container(container)
 
 func _on_open_pressed():
@@ -92,17 +98,18 @@ func open_artefact(path):
 		return
 
 func open_artefact_markdown(path):
-	var editor = load("res://scenes/split_text_editor.tscn").instantiate()
+	var editor = SPLIT_TEXT_EDITOR.instantiate()
+	print(editor)
 	add_container(editor)
 	editor.open_artefact.connect(_on_open_artefact_received)
 	editor.name_changed.connect(_on_editor_name_changed)
 	editor.set_artefact(path)
-	
+
 func get_title():
 	return "Container"
 
 func _on_settings_pressed():
-	var editor = load("res://scenes/settings_editor.tscn").instantiate()
+	var editor = SETTINGS_EDITOR.instantiate()
 	add_container(editor)
 
 func _on_search_pressed():
@@ -112,8 +119,7 @@ func _on_search_pressed():
 func search(text):
 	var lib = Global.get_setting("library_path")
 	var results = Search.search(text, Global.get_setting("library_path"))
-	var file = File.new()
-	file.open("res://defaults/search_results.md.template", File.READ)
+	var file = FileAccess.open("res://defaults/search_results.md.template", FileAccess.READ)
 	var template = file.get_as_text()
 	file.close()
 	var formatted_results = {

@@ -28,8 +28,7 @@ func load_artefact(path: String, update_recent: bool = true):
 	path = Util.normalize_path(path)
 	var artefact = find_existing_artefact(path)
 	var type = get_artefact_type(path)
-	var file = File.new()
-	if not file.file_exists(path):
+	if not FileAccess.file_exists(path):
 		if type.is_read_only():
 			type = Artefact
 	if not artefact:

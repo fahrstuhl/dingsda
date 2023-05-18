@@ -16,8 +16,7 @@ static func normalize_path(path: String):
 	var abs_path
 	if path.is_relative_path():
 		root = "/"
-		var file = File.new()
-		file.open(path, File.READ)
+		var file = FileAccess.open(path, FileAccess.READ)
 		abs_path = file.get_path_absolute()
 		file.close()
 	elif path.is_absolute_path():
@@ -43,6 +42,6 @@ static func normalize_path(path: String):
 		parts.remove(dotdot-1)
 		dotdot = parts.find("..")
 	for part in parts:
-		norm_path = norm_path.plus_file(part)
+		norm_path = norm_path.path_join(part)
 #	print("Original Path:\n{0}\nAbsolute Path:\n{1}\nNormalized Path:\n{2}".format([path, abs_path, norm_path]))
 	return norm_path

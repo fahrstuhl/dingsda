@@ -14,8 +14,7 @@ func search(string, path):
 	return results
 
 func get_filenames(path, recursive):
-	var dir: Directory = Directory.new()
-	dir.open(path)
+	var dir = DirAccess.open(path)
 	dir.include_hidden = true
 	dir.include_navigational = false
 	dir.list_dir_begin()
@@ -23,10 +22,10 @@ func get_filenames(path, recursive):
 	var filenames = []
 	while current != "":
 		if recursive and dir.current_is_dir():
-			var sub_path = path.plus_file(current)
+			var sub_path = path.path_join(current)
 			var sub_filenames = get_filenames(sub_path, true)
 			for sub in sub_filenames:
-				filenames.append(current.plus_file(sub))
+				filenames.append(current.path_join(sub))
 		else:
 			filenames.append(current)
 		current = dir.get_next()
@@ -35,14 +34,14 @@ func get_filenames(path, recursive):
 func prefix_filenames(filenames, prefix):
 	var abs_names = []
 	for file in filenames:
-		abs_names.append(prefix.plus_file(file))
+		abs_names.append(prefix.path_join(file))
 	return abs_names
 
 func search_filenames(string, filenames, abs_path):
 	var results = []
 	for file in filenames:
 		if file.findn(string) != -1:
-			results.append(abs_path.plus_file(file))
+			results.append(abs_path.path_join(file))
 	return results
 
 func search_content(string, filenames):

@@ -8,59 +8,13 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Node",
-"class": &"Artefact",
-"language": &"GDScript",
-"path": "res://scripts/artefact.gd"
-}, {
-"base": "Artefact",
-"class": &"ArtefactImage",
-"language": &"GDScript",
-"path": "res://scripts/artefact_image.gd"
-}, {
-"base": "Artefact",
-"class": &"ArtefactMarkdown",
-"language": &"GDScript",
-"path": "res://scripts/artefact_markdown.gd"
-}, {
-"base": "Artefact",
-"class": &"ArtefactSettings",
-"language": &"GDScript",
-"path": "res://scripts/artefact_settings.gd"
-}, {
-"base": "ResourceFormatLoader",
-"class": &"ImageFileLoader",
-"language": &"GDScript",
-"path": "res://scripts/image_file_loader.gd"
-}, {
-"base": "Node",
-"class": &"Markdown",
-"language": &"GDScript",
-"path": "res://bin/libmarkdown.gd"
-}, {
-"base": "Node",
-"class": &"Util",
-"language": &"GDScript",
-"path": "res://scripts/util.gd"
-}]
-_global_script_class_icons={
-"Artefact": "",
-"ArtefactImage": "",
-"ArtefactMarkdown": "",
-"ArtefactSettings": "",
-"ImageFileLoader": "",
-"Markdown": "",
-"Util": ""
-}
-
 [application]
 
 config/name="dingsda"
 run/main_scene="res://scenes/app.tscn"
+config/features=PackedStringArray("4.0")
 run/low_processor_mode=true
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
-config/features=PackedStringArray("4.0")
 
 [audio]
 
@@ -149,6 +103,8 @@ name_casing=2
 
 [rendering]
 
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false

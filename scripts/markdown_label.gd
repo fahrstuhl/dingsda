@@ -27,6 +27,6 @@ func _on_rich_text_label_meta_hover_ended(_meta):
 	$meta_hover_timer.stop()
 	
 func _on_meta_hover_timer_timeout():
-	$meta_hover_panel.rect_position = get_local_mouse_position() + Vector2(20,0)
+	$meta_hover_panel.position = get_local_mouse_position() + Vector2(20,0)
 	$meta_hover_panel.show()
-	$meta_hover_panel.rect_min_size = $meta_hover_panel/meta_hover_text.rect_size
+	$meta_hover_panel.custom_minimum_size = $meta_hover_panel/meta_hover_text.size

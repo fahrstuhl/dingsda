@@ -8,10 +8,9 @@ var section = "Main"
 func set_default_settings():
 	if config.load("res://defaults/settings.ini") != OK:
 		printerr("failed to load defaults for config from res://")
-	var lib = OS.get_user_data_dir().plus_file("wiki")
-	var dir = Directory.new()
-	if not dir.dir_exists(lib):
-		if dir.make_dir(lib) != OK:
+	var lib = OS.get_user_data_dir().path_join("wiki")
+	if not DirAccess.dir_exists_absolute(lib):
+		if DirAccess.make_dir_absolute(lib) != OK:
 			printerr("Can't create wiki directory at {0}".format([lib]))
 	set_setting("library_path", lib)
 
@@ -29,8 +28,7 @@ func init(file_path):
 		printerr("failed to load defaults for defaults from res://")
 	path = file_path
 	config = ConfigFile.new()
-	var file = File.new()
-	if not file.file_exists(path):
+	if not FileAccess.file_exists(path):
 		set_default_settings()
 	load_content()
 	add_missing_settings()

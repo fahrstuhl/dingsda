@@ -1,27 +1,27 @@
 [gd_scene load_steps=7 format=3 uid="uid://qu8m4to34n3s"]
 
-[ext_resource type="Font" path="res://fonts/NotoSans-Regular.tres" id="1"]
-[ext_resource type="Font" path="res://fonts/NotoSans-BoldItalics.tres" id="2"]
-[ext_resource type="Font" path="res://fonts/NotoSans-Italics.tres" id="3"]
-[ext_resource type="Font" path="res://fonts/NotoSans-Bold.tres" id="4"]
-[ext_resource type="Font" path="res://fonts/NotoSansMono-Regular.tres" id="5"]
+[ext_resource type="FontFile" path="res://fonts/NotoSans-Regular.tres" id="1"]
+[ext_resource type="FontFile" path="res://fonts/NotoSans-BoldItalics.tres" id="2"]
+[ext_resource type="FontFile" path="res://fonts/NotoSans-Italics.tres" id="3"]
+[ext_resource type="FontFile" path="res://fonts/NotoSans-Bold.tres" id="4"]
+[ext_resource type="FontFile" path="res://fonts/NotoSansMono-Regular.tres" id="5"]
 [ext_resource type="Script" path="res://scripts/markdown_label.gd" id="6"]
 
 [node name="rich_text_label" type="RichTextLabel"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 focus_mode = 2
-theme_override_fonts/mono_font = ExtResource( "5" )
-theme_override_fonts/bold_italics_font = ExtResource( "2" )
-theme_override_fonts/italics_font = ExtResource( "3" )
-theme_override_fonts/bold_font = ExtResource( "4" )
-theme_override_fonts/normal_font = ExtResource( "1" )
+theme_override_fonts/normal_font = ExtResource("1")
+theme_override_fonts/bold_font = ExtResource("4")
+theme_override_fonts/italics_font = ExtResource("3")
+theme_override_fonts/bold_italics_font = ExtResource("2")
+theme_override_fonts/mono_font = ExtResource("5")
 bbcode_enabled = true
 selection_enabled = true
-script = ExtResource( "6" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("6")
 
 [node name="meta_hover_timer" type="Timer" parent="."]
 wait_time = 0.333
@@ -29,11 +29,10 @@ one_shot = true
 
 [node name="meta_hover_panel" type="Panel" parent="."]
 visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
 
 [node name="meta_hover_text" type="Label" parent="meta_hover_panel"]
+layout_mode = 0
 size_flags_vertical = 1
 
 [connection signal="meta_hover_ended" from="." to="." method="_on_rich_text_label_meta_hover_ended"]

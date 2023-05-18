@@ -1,55 +1,38 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bex6fkbe7be2m"]
 
-[ext_resource path="res://scripts/path_select.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://scripts/path_select.gd" id="1"]
 
 [node name="path" type="HBoxContainer"]
+anchors_preset = 10
 anchor_right = 1.0
-margin_right = 1024.0
-margin_bottom = 45.0
 size_flags_horizontal = 3
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1")
 
 [node name="setting_name" type="Label" parent="."]
-margin_top = 10.0
-margin_right = 962.0
-margin_bottom = 35.0
-mouse_filter = 1
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 max_lines_visible = 2
 
 [node name="current_path" type="LineEdit" parent="."]
-margin_left = 970.0
-margin_right = 1932.0
-margin_bottom = 45.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="save" type="Button" parent="."]
-margin_left = 1940.0
-margin_right = 2015.0
-margin_bottom = 45.0
+layout_mode = 2
 text = "Save"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="open_dir_dialog" type="Button" parent="."]
-margin_left = 2023.0
-margin_right = 2047.0
-margin_bottom = 45.0
+layout_mode = 2
 text = "📁"
 
 [node name="dir_dialog" type="FileDialog" parent="."]
-margin_right = 645.0
-margin_bottom = 248.0
-window_title = "Open a Directory"
+title = "Open a Directory"
 mode = 2
+ok_button_text = "Select Current Folder"
+file_mode = 2
 access = 2
-current_dir = "/home/fahrstuhl/projects/diae/godiae"
-current_path = "/home/fahrstuhl/projects/diae/godiae/"
-[connection signal="text_entered" from="current_path" to="." method="_on_current_path_text_entered"]
+
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="open_dir_dialog" to="." method="_on_open_dir_dialog_pressed"]
 [connection signal="dir_selected" from="dir_dialog" to="." method="_on_dir_dialog_dir_selected"]

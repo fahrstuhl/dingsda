@@ -5,12 +5,10 @@ class_name ArtefactMarkdown
 var text: String = "":
 	set = set_text
 var bbcode_text: String = ""
-var file: File
 
 func init(file_path):
 	path = file_path
-	file = File.new()
-	if not file.file_exists(path):
+	if not FileAccess.file_exists(path):
 		store_content()
 	set_text(load_content())
 
@@ -22,7 +20,8 @@ func set_text(new_text):
 	emit_signal("changed")
 
 func load_content():
-	var error = file.open(path, File.READ)
+	var file = FileAccess.open(path, FileAccess.READ)
+	var error = file.get_error()
 	var result = ""
 	if error != OK:
 		printerr(path)
@@ -34,8 +33,8 @@ func load_content():
 	return result
 
 func write_to_file():
-	var error = file.open(path, File.WRITE)
-	if error != OK:
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	if file.get_error() != OK:
 		printerr("Can't open file for writing.")
 	else:
 		file.store_string(text)

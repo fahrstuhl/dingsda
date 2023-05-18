@@ -28,7 +28,7 @@ func set_artefact(artefact_path: String):
 			prev_artefact.changed.disconnect(_on_artefact_changed)
 		current_artefact.changed.connect(_on_artefact_changed)
 		$editor/rich_text_label.set_artefact(artefact_path)
-		$editor/text_edit.text = current_artefact.text
+		%text_edit.text = current_artefact.text
 		_on_text_edit_focus_exited()
 		_on_text_edit_text_changed()
 		active = true
@@ -39,16 +39,16 @@ func change_name():
 	emit_signal("name_changed")
 
 func _on_text_edit_text_changed():
-	if $editor/text_edit.editable:
-		current_artefact.text = $editor/text_edit.text
+	if %text_edit.editable:
+		current_artefact.text = %text_edit.text
 
 func _on_artefact_changed():
-	if not $editor/text_edit.editable:
-		$editor/text_edit.text = current_artefact.text
+	if not %text_edit.editable:
+		%text_edit.text = current_artefact.text
 
 func _on_text_edit_focus_exited():
-	$editor/text_edit.editable = false
-	$editor/text_edit.hide()
+	%text_edit.editable = false
+	%text_edit.hide()
 	$editor/rich_text_label.show()
 	current_artefact.render_content()
 	current_artefact.store_content()
@@ -61,10 +61,10 @@ func _on_rich_text_label_gui_input(event):
 			start_editing()
 
 func start_editing():
-	$editor/text_edit.editable = true
+	%text_edit.editable = true
 	$editor/rich_text_label.hide()
-	$editor/text_edit.show()
-	$editor/text_edit.grab_focus()
+	%text_edit.show()
+	%text_edit.grab_focus()
 
 func _on_close_pressed():
 	queue_free()
@@ -94,7 +94,7 @@ func _on_rich_text_label_meta_clicked(meta: String):
 		var path = meta
 		if meta.is_relative_path():
 			path = Util.normalize_path(library_path.plus_file(meta))
-			path = "file://".plus_file(path)
+			path = "file://".path_join(path)
 			printerr("""Relative path handling is still wrong because relative 
 			paths are usually relative to the document they're linked in,
 			which is not necessarily the library path.""")
