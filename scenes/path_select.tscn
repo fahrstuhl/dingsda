@@ -33,6 +33,7 @@ ok_button_text = "Select Current Folder"
 file_mode = 2
 access = 2
 
+[connection signal="text_submitted" from="current_path" to="." method="_on_current_path_text_submitted"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="open_dir_dialog" to="." method="_on_open_dir_dialog_pressed"]
 [connection signal="dir_selected" from="dir_dialog" to="." method="_on_dir_dialog_dir_selected"]

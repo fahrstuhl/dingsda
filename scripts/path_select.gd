@@ -24,12 +24,13 @@ func _on_open_dir_dialog_pressed():
 func _on_dir_dialog_dir_selected(dir):
 	save_setting(dir)
 
-func _on_current_path_text_entered(dir):
-	save_setting(dir)
-
 func _on_save_pressed():
 	save_setting($current_path.text)
 
 func save_setting(dir):
 	set_current_value(dir)
 	emit_signal("path_changed", current_value)
+
+
+func _on_current_path_text_submitted(dir):
+	save_setting(dir)
