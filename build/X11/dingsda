@@ -1,4 +1,4 @@
 #!/bin/bash
 SCRIPT_DIR=$( cd -- "$( dirname -- "$(readlink -f ${BASH_SOURCE[0]})" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
-VK_ICD_FILENAMES=./bin/linux/x86_64/vk_swiftshader_icd.json ./dingsda.x86_64
+./dingsda.x86_64
