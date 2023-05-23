@@ -10,7 +10,7 @@ signal path_changed(path)
 
 func _ready():
 	$setting_name.text = setting_name
-	$setting_name.hint_tooltip = setting_description
+	$setting_name.tooltip_text = setting_description
 
 func set_current_value(dir):
 	current_value = dir
