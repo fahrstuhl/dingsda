@@ -2,6 +2,7 @@ extends VBoxContainer
 
 var SPLIT_TEXT_EDITOR = preload("res://scenes/split_text_editor.tscn")
 var SETTINGS_EDITOR = preload("res://scenes/settings_editor.tscn")
+var IMAGE_EDITOR = preload("res://scenes/image_editor.tscn")
 @onready
 var EDITOR_CONTAINER = load("res://scenes/editor_container.tscn")
 
@@ -94,12 +95,21 @@ func open_artefact(path):
 		open_artefact_markdown(path)
 	elif type == ArtefactSettings:
 		_on_settings_pressed()
+	elif type == ArtefactImage:
+		open_artefact_image(path)
 	else:
 		return
 
 func open_artefact_markdown(path):
 	var editor = SPLIT_TEXT_EDITOR.instantiate()
 	print(editor)
+	add_container(editor)
+	editor.open_artefact.connect(_on_open_artefact_received)
+	editor.name_changed.connect(_on_editor_name_changed)
+	editor.set_artefact(path)
+
+func open_artefact_image(path):
+	var editor = IMAGE_EDITOR.instantiate()
 	add_container(editor)
 	editor.open_artefact.connect(_on_open_artefact_received)
 	editor.name_changed.connect(_on_editor_name_changed)
