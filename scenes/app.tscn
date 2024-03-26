@@ -1,12 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ie3e3ey3njil"]
+[gd_scene load_steps=4 format=3 uid="uid://ie3e3ey3njil"]
 
 [ext_resource type="PackedScene" uid="uid://dindykuocxgo6" path="res://scenes/editor_container.tscn" id="1"]
-[ext_resource type="FontFile" uid="uid://dyut53vvunc5p" path="res://fonts/Noto_Sans/NotoSans-Regular.ttf" id="1_0cykq"]
+[ext_resource type="Theme" uid="uid://j300i64p46q" path="res://fonts/app.theme" id="1_yx4np"]
 [ext_resource type="Script" path="res://scripts/app.gd" id="4"]
-
-[sub_resource type="Theme" id="Theme_fnsv2"]
-default_font = ExtResource("1_0cykq")
-default_font_size = 16
 
 [node name="app" type="Control"]
 layout_mode = 3
@@ -17,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_fnsv2")
+theme = ExtResource("1_yx4np")
 script = ExtResource("4")
 
 [node name="editor_container" parent="." instance=ExtResource("1")]
