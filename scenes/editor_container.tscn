@@ -76,11 +76,11 @@ alignment = 1
 
 [node name="file_dialog" type="FileDialog" parent="."]
 title = "Open File"
-ok_button_text = "Open"
+ok_button_text = "Save"
 mode_overrides_title = false
-file_mode = 0
 access = 2
 show_hidden_files = true
+use_native_dialog = true
 
 [node name="search_panel" type="PopupPanel" parent="."]
 

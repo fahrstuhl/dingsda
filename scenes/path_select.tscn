@@ -27,11 +27,12 @@ layout_mode = 2
 text = "📁"
 
 [node name="dir_dialog" type="FileDialog" parent="."]
-title = "Open a Directory"
 mode = 2
+title = "Open a Directory"
 ok_button_text = "Select Current Folder"
 file_mode = 2
 access = 2
+use_native_dialog = true
 
 [connection signal="text_submitted" from="current_path" to="." method="_on_current_path_text_submitted"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
