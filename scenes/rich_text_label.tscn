@@ -1,10 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://qu8m4to34n3s"]
+[gd_scene load_steps=2 format=3 uid="uid://qu8m4to34n3s"]
 
-[ext_resource type="FontFile" uid="uid://b48d0skhn8qsp" path="res://fonts/Noto_Sans/NotoSans-Regular.ttf" id="1"]
-[ext_resource type="FontFile" uid="uid://crleonmcrcl2d" path="res://fonts/Noto_Sans/NotoSans-BoldItalic.ttf" id="2"]
-[ext_resource type="FontFile" uid="uid://bpgebvx4onu8" path="res://fonts/Noto_Sans/NotoSans-Italic.ttf" id="3"]
-[ext_resource type="FontFile" uid="uid://co0t2uart7wmj" path="res://fonts/Noto_Sans/NotoSans-Bold.ttf" id="4"]
-[ext_resource type="FontFile" uid="uid://bb8t1vn7qlajr" path="res://fonts/NotoSansMono-hinted/NotoSansMono-Regular.ttf" id="5"]
 [ext_resource type="Script" path="res://scripts/markdown_label.gd" id="6"]
 
 [node name="rich_text_label" type="RichTextLabel"]
@@ -14,11 +9,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
-theme_override_fonts/normal_font = ExtResource("1")
-theme_override_fonts/bold_font = ExtResource("4")
-theme_override_fonts/italics_font = ExtResource("3")
-theme_override_fonts/bold_italics_font = ExtResource("2")
-theme_override_fonts/mono_font = ExtResource("5")
 bbcode_enabled = true
 selection_enabled = true
 script = ExtResource("6")
