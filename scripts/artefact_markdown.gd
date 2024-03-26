@@ -10,6 +10,7 @@ var is_changed_since_last_store := false
 func init(file_path):
 	path = file_path
 	if not FileAccess.file_exists(path):
+		is_changed_since_last_store = true
 		store_content()
 	set_text(load_content())
 	is_changed_since_last_store = false
