@@ -46,9 +46,8 @@ caret_blink = true
 highlight_all_occurrences = true
 
 [node name="file_dialog" type="FileDialog" parent="."]
-title = "Open a File"
 ok_button_text = "Open"
-file_mode = 0
+mode_overrides_title = false
 access = 2
 filters = PackedStringArray("*.txt ; Text Files", "*.md ; Markdown Documents")
 show_hidden_files = true

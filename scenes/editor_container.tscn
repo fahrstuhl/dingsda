@@ -80,7 +80,6 @@ ok_button_text = "Save"
 mode_overrides_title = false
 access = 2
 show_hidden_files = true
-use_native_dialog = true
 
 [node name="search_panel" type="PopupPanel" parent="."]
 
