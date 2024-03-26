@@ -12,7 +12,7 @@ config_version=5
 
 config/name="dingsda"
 run/main_scene="res://scenes/app.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.2")
 run/low_processor_mode=true
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 

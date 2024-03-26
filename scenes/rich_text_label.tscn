@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://qu8m4to34n3s"]
 
-[ext_resource type="FontFile" path="res://fonts/NotoSans-Regular.tres" id="1"]
-[ext_resource type="FontFile" path="res://fonts/NotoSans-BoldItalics.tres" id="2"]
-[ext_resource type="FontFile" path="res://fonts/NotoSans-Italics.tres" id="3"]
-[ext_resource type="FontFile" path="res://fonts/NotoSans-Bold.tres" id="4"]
-[ext_resource type="FontFile" path="res://fonts/NotoSansMono-Regular.tres" id="5"]
+[ext_resource type="FontFile" uid="uid://b48d0skhn8qsp" path="res://fonts/Noto_Sans/NotoSans-Regular.ttf" id="1"]
+[ext_resource type="FontFile" uid="uid://crleonmcrcl2d" path="res://fonts/Noto_Sans/NotoSans-BoldItalic.ttf" id="2"]
+[ext_resource type="FontFile" uid="uid://bpgebvx4onu8" path="res://fonts/Noto_Sans/NotoSans-Italic.ttf" id="3"]
+[ext_resource type="FontFile" uid="uid://co0t2uart7wmj" path="res://fonts/Noto_Sans/NotoSans-Bold.ttf" id="4"]
+[ext_resource type="FontFile" uid="uid://bb8t1vn7qlajr" path="res://fonts/NotoSansMono-hinted/NotoSansMono-Regular.ttf" id="5"]
 [ext_resource type="Script" path="res://scripts/markdown_label.gd" id="6"]
 
 [node name="rich_text_label" type="RichTextLabel"]

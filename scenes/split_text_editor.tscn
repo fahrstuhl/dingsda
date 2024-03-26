@@ -42,8 +42,8 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 wrap_mode = 1
-highlight_all_occurrences = true
 caret_blink = true
+highlight_all_occurrences = true
 
 [node name="file_dialog" type="FileDialog" parent="."]
 title = "Open a File"
