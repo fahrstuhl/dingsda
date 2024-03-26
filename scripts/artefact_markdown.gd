@@ -5,18 +5,21 @@ class_name ArtefactMarkdown
 var text: String = "":
 	set = set_text
 var bbcode_text: String = ""
+var is_changed_since_last_store := false
 
 func init(file_path):
 	path = file_path
 	if not FileAccess.file_exists(path):
 		store_content()
 	set_text(load_content())
+	is_changed_since_last_store = false
 
 static func is_read_only():
 	return false
 
 func set_text(new_text):
 	text = new_text
+	is_changed_since_last_store = true
 	emit_signal("changed")
 
 func load_content():
@@ -33,12 +36,17 @@ func load_content():
 	return result
 
 func write_to_file():
+	if !is_changed_since_last_store:
+		print_verbose("Not writing unchanged file %s" % path)
+		return
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file.get_error() != OK:
 		printerr("Can't open file for writing.")
 	else:
 		file.store_string(text)
 		file.close()
+		is_changed_since_last_store = false
+		print_verbose("Saved changed file %s" % path)
 
 func render():
 	bbcode_text = Markdown.convert_markdown(text)
