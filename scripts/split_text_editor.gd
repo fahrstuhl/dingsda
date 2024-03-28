@@ -29,6 +29,7 @@ func set_artefact(artefact_path: String):
 		current_artefact.changed.connect(_on_artefact_changed)
 		$editor/rich_text_label.set_artefact(artefact_path)
 		%text_edit.text = current_artefact.text
+		%text_edit.clear_undo_history()
 		_on_text_edit_focus_exited()
 		_on_text_edit_text_changed()
 		active = true
