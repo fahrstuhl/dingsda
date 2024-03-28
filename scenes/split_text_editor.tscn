@@ -42,6 +42,8 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 wrap_mode = 1
+scroll_smooth = true
+scroll_past_end_of_file = true
 caret_blink = true
 highlight_all_occurrences = true
 
