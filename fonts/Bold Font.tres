@@ -1,0 +1,10 @@
+[gd_resource type="SystemFont" load_steps=4 format=3 uid="uid://p837msp8q0o7"]
+
+[ext_resource type="SystemFont" uid="uid://bvahhehvilgdk" path="res://fonts/Emoji Font.tres" id="1_q7jxp"]
+[ext_resource type="FontFile" uid="uid://co0t2uart7wmj" path="res://fonts/Noto_Sans/NotoSans-Bold.ttf" id="2_xxet8"]
+[ext_resource type="FontFile" uid="uid://li31rljoil6w" path="res://fonts/Noto-hinted/NotoColorEmoji.ttf" id="3_o1isd"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("1_q7jxp"), ExtResource("2_xxet8"), ExtResource("3_o1isd")])
+font_names = PackedStringArray("Noto Sans", "Sans-Serif")
+font_weight = 700

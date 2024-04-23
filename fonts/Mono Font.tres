@@ -1,0 +1,9 @@
+[gd_resource type="SystemFont" load_steps=4 format=3 uid="uid://do4gwm01sia0q"]
+
+[ext_resource type="SystemFont" uid="uid://bvahhehvilgdk" path="res://fonts/Emoji Font.tres" id="1_nyqcs"]
+[ext_resource type="FontFile" uid="uid://bb8t1vn7qlajr" path="res://fonts/NotoSansMono-hinted/NotoSansMono-Regular.ttf" id="2_hnss6"]
+[ext_resource type="FontFile" uid="uid://li31rljoil6w" path="res://fonts/Noto-hinted/NotoColorEmoji.ttf" id="3_58ok5"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("1_nyqcs"), ExtResource("2_hnss6"), ExtResource("3_58ok5")])
+font_names = PackedStringArray("Noto Mono", "Monospace")
