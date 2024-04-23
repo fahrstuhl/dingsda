@@ -112,7 +112,7 @@ func _on_rich_text_label_meta_clicked(meta: String):
 		if meta.get_extension() == "":
 			artefact_name = "{0}.md".format([meta])
 		artefact_name = artefact_name.trim_prefix("#") # removes `#`
-		var path = library_path.plus_file(artefact_name)
+		var path = library_path.path_join(artefact_name)
 		emit_signal("open_artefact", path)
 	elif meta.begins_with("user://"):
 		emit_signal("open_artefact", meta)
@@ -123,7 +123,7 @@ func _on_rich_text_label_meta_clicked(meta: String):
 	else:
 		var path = meta
 		if meta.is_relative_path():
-			path = Util.normalize_path(library_path.plus_file(meta))
+			path = Util.normalize_path(library_path.path_join(meta))
 			path = "file://".path_join(path)
 			printerr("""Relative path handling is still wrong because relative 
 			paths are usually relative to the document they're linked in,
