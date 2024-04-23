@@ -77,7 +77,8 @@ func get_approximate_line(pos: Vector2):
 	var clicked_y = top_y + y
 	var rel_y = clamp(clicked_y / max_y, 0.0, 1.0)
 	var clicked_line = min(rel_y * n_lines, n_lines)
-	var debug_output = """{0}px / {1}px = {2}
+	var debug_output = """Approximate vertical position:
+	{0}px / {1}px = {2}
 	Ratio {3}
 	Top Y: {4}, Clicked Y: {5}, Max y : {6}
 	Top line: {7}, Clicked line: {8}, Max line: {9}
@@ -87,6 +88,7 @@ func get_approximate_line(pos: Vector2):
 				top_y, clicked_y, max_y,
 				top_line, clicked_line, n_lines
 				])
+	print_debug(debug_output)
 	return ratio
 
 func start_editing():
