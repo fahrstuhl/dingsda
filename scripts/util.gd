@@ -5,7 +5,7 @@ static func resolve_path(rel_path: String, origin: String):
 	if not rel_path.is_relative_path():
 		return normalize_path(rel_path)
 	var base = origin.get_base_dir()
-	var resolved = normalize_path(base.plus_file(rel_path))
+	var resolved = normalize_path(base.path_join(rel_path))
 	print("Resolved\n{0}\nfrom\n{1}\nto\n{2}\n".format([rel_path, origin, resolved]))
 	return resolved
 
