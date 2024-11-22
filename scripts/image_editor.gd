@@ -21,10 +21,7 @@ func change_name():
 func get_title():
 	var title = "Image Editor"
 	if not current_artefact == null:
-		title = current_artefact.path
-		var library_path = Global.get_setting("library_path")
-		if title.begins_with(library_path):
-			title = "<library_path>" + title.trim_prefix(library_path)
+		title = Global.shorten_title(current_artefact.path)
 	return title
 
 func _on_file_dialog_file_selected(path):

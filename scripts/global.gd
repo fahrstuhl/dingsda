@@ -9,6 +9,12 @@ func _ready():
 func get_setting(path):
 	return settings.get_setting(path)
 
+func shorten_title(title):
+	var library_path = get_setting("library_path")
+	if title.begins_with(library_path):
+		title = "#" + title.trim_prefix(library_path)
+	return title
+
 func add_recent_artefact(path):
 	if path == "user://recent_artefacts.md":
 		return
