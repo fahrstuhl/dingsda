@@ -1,0 +1,18 @@
+class_name Solarized
+
+const base03  := Color("002b36")
+const base02  := Color("073642")
+const base01  := Color("586e75")
+const base00  := Color("657b83")
+const base0   := Color("839496")
+const base1   := Color("93a1a1")
+const base2   := Color("eee8d5")
+const base3   := Color("fdf6e3")
+const yellow  := Color("b58900")
+const orange  := Color("cb4b16")
+const red     := Color("dc322f")
+const magenta := Color("d33682")
+const violet  := Color("6c71c4")
+const blue    := Color("268bd2")
+const cyan    := Color("2aa198")
+const green   := Color("859900")
