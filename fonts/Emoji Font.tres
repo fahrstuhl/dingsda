@@ -1,4 +1,6 @@
-[gd_resource type="SystemFont" format=3 uid="uid://bvahhehvilgdk"]
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://b0tpf2co7v5xc"]
+
+[ext_resource type="FontFile" uid="uid://brp1rto5i3frh" path="res://fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf" id="1_jfqbg"]
 
 [resource]
-font_names = PackedStringArray("Noto Color Emoji")
+base_font = ExtResource("1_jfqbg")

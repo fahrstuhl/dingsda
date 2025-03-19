@@ -1,9 +1,8 @@
-[gd_resource type="SystemFont" load_steps=4 format=3 uid="uid://do4gwm01sia0q"]
+[gd_resource type="FontVariation" load_steps=3 format=3 uid="uid://d0ik03cjylcrt"]
 
-[ext_resource type="SystemFont" uid="uid://bvahhehvilgdk" path="res://fonts/Emoji Font.tres" id="1_nyqcs"]
-[ext_resource type="FontFile" uid="uid://bb8t1vn7qlajr" path="res://fonts/NotoSansMono-hinted/NotoSansMono-Regular.ttf" id="2_hnss6"]
-[ext_resource type="FontFile" uid="uid://li31rljoil6w" path="res://fonts/Noto-hinted/NotoColorEmoji.ttf" id="3_58ok5"]
+[ext_resource type="FontFile" uid="uid://r1mohtajkt1k" path="res://fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth,wght.ttf" id="1_isyke"]
+[ext_resource type="FontFile" uid="uid://brp1rto5i3frh" path="res://fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf" id="2_a2bv4"]
 
 [resource]
-fallbacks = Array[Font]([ExtResource("1_nyqcs"), ExtResource("2_hnss6"), ExtResource("3_58ok5")])
-font_names = PackedStringArray("Noto Mono", "Monospace")
+fallbacks = Array[Font]([ExtResource("2_a2bv4")])
+base_font = ExtResource("1_isyke")

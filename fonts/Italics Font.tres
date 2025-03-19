@@ -1,10 +1,8 @@
-[gd_resource type="SystemFont" load_steps=4 format=3 uid="uid://c3affcnbfc13l"]
+[gd_resource type="FontVariation" load_steps=3 format=3 uid="uid://w8nrutwv1txm"]
 
-[ext_resource type="SystemFont" uid="uid://bvahhehvilgdk" path="res://fonts/Emoji Font.tres" id="1_cyb4n"]
-[ext_resource type="FontFile" uid="uid://bpgebvx4onu8" path="res://fonts/Noto_Sans/NotoSans-Italic.ttf" id="2_l37ub"]
-[ext_resource type="FontFile" uid="uid://li31rljoil6w" path="res://fonts/Noto-hinted/NotoColorEmoji.ttf" id="3_yiij0"]
+[ext_resource type="FontFile" uid="uid://dj80gpikpa2kv" path="res://fonts/Noto_Sans/NotoSans-Italic-VariableFont_wdth,wght.ttf" id="1_chrpo"]
+[ext_resource type="FontFile" uid="uid://brp1rto5i3frh" path="res://fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf" id="2_07fmm"]
 
 [resource]
-fallbacks = Array[Font]([ExtResource("1_cyb4n"), ExtResource("2_l37ub"), ExtResource("3_yiij0")])
-font_names = PackedStringArray("Noto Sans", "Sans-Serif")
-font_italic = true
+fallbacks = Array[Font]([ExtResource("2_07fmm")])
+base_font = ExtResource("1_chrpo")
