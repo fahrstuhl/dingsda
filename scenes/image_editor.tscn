@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d0oyudtogrqxx"]
 
-[ext_resource type="Script" path="res://scripts/image_editor.gd" id="1_70gcu"]
+[ext_resource type="Script" uid="uid://hyb6jpxal2l0" path="res://scripts/image_editor.gd" id="1_70gcu"]
 
 [node name="image_editor" type="VBoxContainer"]
 anchors_preset = 15

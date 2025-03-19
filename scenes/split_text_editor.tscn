@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhkrao4jt62em"]
 
-[ext_resource type="Script" path="res://scripts/split_text_editor.gd" id="1"]
+[ext_resource type="Script" uid="uid://nfsjl6dkge2l" path="res://scripts/split_text_editor.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://qu8m4to34n3s" path="res://scenes/rich_text_label.tscn" id="3"]
 
 [node name="editor_container" type="VBoxContainer"]

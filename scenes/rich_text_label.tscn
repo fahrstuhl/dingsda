@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://qu8m4to34n3s"]
 
-[ext_resource type="Script" path="res://scripts/markdown_label.gd" id="6"]
+[ext_resource type="Script" uid="uid://45iqtbemk5ch" path="res://scripts/markdown_label.gd" id="6"]
 
 [node name="rich_text_label" type="RichTextLabel"]
 anchors_preset = 15

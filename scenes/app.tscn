@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dindykuocxgo6" path="res://scenes/editor_container.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://j300i64p46q" path="res://fonts/app.theme" id="1_yx4np"]
-[ext_resource type="Script" path="res://scripts/app.gd" id="4"]
+[ext_resource type="Script" uid="uid://cxucvs7l8l6uq" path="res://scripts/app.gd" id="4"]
 
 [node name="app" type="Control"]
 layout_mode = 3

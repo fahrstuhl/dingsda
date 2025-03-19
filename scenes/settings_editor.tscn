@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://chgbuw5uonyce"]
 
 [ext_resource type="PackedScene" uid="uid://bex6fkbe7be2m" path="res://scenes/path_select.tscn" id="1"]
-[ext_resource type="Script" path="res://scripts/settings_editor.gd" id="2"]
+[ext_resource type="Script" uid="uid://cm8o5xfsgiy0q" path="res://scripts/settings_editor.gd" id="2"]
 
 [node name="settings_editor" type="VBoxContainer"]
 anchors_preset = 15
