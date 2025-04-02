@@ -55,8 +55,7 @@ func _on_text_edit_focus_exited():
 
 func _on_rich_text_label_gui_input(event):
 	if active:
-		var click = event is InputEventMouseButton and event.is_pressed()
-		var singleclick = click and not event.is_double_click()
+		var click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
 		var doubleclick = click and event.is_double_click()
 		var two_finger_touch = event is InputEventScreenTouch and event.is_pressed() and event.index == 1
 		if doubleclick or two_finger_touch:
