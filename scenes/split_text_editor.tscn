@@ -30,7 +30,7 @@ text = "📁"
 layout_mode = 2
 text = "✖"
 
-[node name="editor" type="MarginContainer" parent="."]
+[node name="editor" type="PanelContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -38,7 +38,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="text_edit" type="TextEdit" parent="editor"]
+[node name="markdown_edit" type="TextEdit" parent="editor"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -49,7 +49,37 @@ scroll_past_end_of_file = true
 caret_blink = true
 highlight_all_occurrences = true
 
+[node name="findpanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="findhbox" type="HBoxContainer" parent="findpanel"]
+layout_mode = 2
+
+[node name="findentry" type="LineEdit" parent="findpanel/findhbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Find text"
+
+[node name="matches" type="Label" parent="findpanel/findhbox"]
+layout_mode = 2
+
+[node name="previous" type="Button" parent="findpanel/findhbox"]
+layout_mode = 2
+text = "previous"
+
+[node name="next" type="Button" parent="findpanel/findhbox"]
+layout_mode = 2
+text = "next"
+
+[node name="close" type="Button" parent="findpanel/findhbox"]
+layout_mode = 2
+text = "close"
+
 [node name="file_dialog" type="FileDialog" parent="."]
+oversampling_override = 1.0
 mode_overrides_title = false
 access = 2
 filters = PackedStringArray("*.txt ; Text Files", "*.md ; Markdown Documents")
@@ -60,6 +90,10 @@ use_native_dialog = true
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="gui_input" from="editor/markdown_label" to="." method="_on_rich_text_label_gui_input"]
 [connection signal="meta_clicked" from="editor/markdown_label" to="." method="_on_rich_text_label_meta_clicked"]
-[connection signal="focus_exited" from="editor/text_edit" to="." method="_on_text_edit_focus_exited"]
-[connection signal="text_changed" from="editor/text_edit" to="." method="_on_text_edit_text_changed"]
+[connection signal="focus_exited" from="editor/markdown_edit" to="." method="_on_text_edit_focus_exited"]
+[connection signal="gui_input" from="editor/markdown_edit" to="." method="_on_markdown_edit_gui_input"]
+[connection signal="text_changed" from="editor/markdown_edit" to="." method="_on_text_edit_text_changed"]
+[connection signal="gui_input" from="findpanel/findhbox/findentry" to="." method="_on_findentry_gui_input"]
+[connection signal="text_changed" from="findpanel/findhbox/findentry" to="." method="_on_find_entry_text_changed"]
+[connection signal="pressed" from="findpanel/findhbox/close" to="." method="_on_find_close_pressed"]
 [connection signal="file_selected" from="file_dialog" to="." method="_on_file_dialog_file_selected"]
