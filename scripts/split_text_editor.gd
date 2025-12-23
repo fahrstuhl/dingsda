@@ -53,13 +53,21 @@ func _on_text_edit_focus_exited():
 	current_artefact.render_content()
 	current_artefact.store_content()
 
-func _on_rich_text_label_gui_input(event):
-	if active:
-		var click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
-		var doubleclick = click and event.is_double_click()
-		var two_finger_touch = event is InputEventScreenTouch and event.is_pressed() and event.index == 1
-		if doubleclick or two_finger_touch:
-			start_editing()
+func _on_rich_text_label_gui_input(event: InputEvent):
+	if not active:
+		return
+	var click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
+	var doubleclick = click and event.is_double_click()
+	if doubleclick:
+		start_editing()
+	if event.is_action_pressed("ui_find"):
+		find()
+
+func find():
+	if %text_edit.editable:
+		print_debug("opening find panel in text editor")
+	else:
+		print_debug("opening find panel in markdown viewer")
 
 func get_approximate_line(pos: Vector2):
 	var bar: VScrollBar = %markdown_label.get_v_scroll_bar()
