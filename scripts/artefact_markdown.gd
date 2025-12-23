@@ -75,5 +75,5 @@ func get_metadata():
 		metadata[key] = value
 	return metadata
 
-static func get_type_name():
-	return "ArtefactMarkdown"
+static func get_type_name() -> StringName:
+	return StringName("ArtefactMarkdown")

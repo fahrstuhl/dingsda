@@ -49,8 +49,8 @@ func _ready():
 	tree_exiting.connect(_on_tree_exiting)
 	render_timer.timeout.connect(_on_render_timeout)
 
-static func get_type_name():
-	return "Artefact"
+static func get_type_name() -> StringName:
+	return StringName("Artefact")
 
 func render_content():
 	render_timer.stop()
