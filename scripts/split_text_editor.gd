@@ -24,7 +24,7 @@ func set_artefact(artefact_path: String):
 		if prev_artefact != null:
 			prev_artefact.changed.disconnect(_on_artefact_changed)
 		current_artefact.changed.connect(_on_artefact_changed)
-		$editor/rich_text_label.set_artefact(artefact_path)
+		%markdown_label.set_artefact(artefact_path)
 		%text_edit.text = current_artefact.text
 		%text_edit.clear_undo_history()
 		_on_text_edit_focus_exited()
@@ -48,8 +48,8 @@ func _on_text_edit_focus_exited():
 	var ratio = %text_edit.get_v_scroll_bar().ratio
 	%text_edit.editable = false
 	%text_edit.hide()
-	$editor/rich_text_label.show()
-	$editor/rich_text_label.get_v_scroll_bar().ratio = ratio
+	%markdown_label.show()
+	%markdown_label.get_v_scroll_bar().ratio = ratio
 	current_artefact.render_content()
 	current_artefact.store_content()
 
@@ -62,12 +62,12 @@ func _on_rich_text_label_gui_input(event):
 			start_editing()
 
 func get_approximate_line(pos: Vector2):
-	var bar: VScrollBar = $editor/rich_text_label.get_v_scroll_bar()
+	var bar: VScrollBar = %markdown_label.get_v_scroll_bar()
 	var ratio = bar.ratio
-	var max_y = $editor/rich_text_label.get_content_height()
+	var max_y = %markdown_label.get_content_height()
 	var top_y = ratio * max_y
-	var n_lines = $editor/rich_text_label.get_line_count()
-	var v_lines = $editor/rich_text_label.get_visible_line_count()
+	var n_lines = %markdown_label.get_line_count()
+	var v_lines = %markdown_label.get_visible_line_count()
 	var top_line = ratio * n_lines
 	var y = pos.y
 	var clicked_y = top_y + y
@@ -89,10 +89,10 @@ func get_approximate_line(pos: Vector2):
 
 func start_editing():
 	%text_edit.editable = true
-	$editor/rich_text_label.hide()
+	%markdown_label.hide()
 	%text_edit.show()
 	%text_edit.grab_focus()
-	%text_edit.get_v_scroll_bar().ratio = $editor/rich_text_label.get_v_scroll_bar().ratio
+	%text_edit.get_v_scroll_bar().ratio = %markdown_label.get_v_scroll_bar().ratio
 
 func _on_close_pressed():
 	queue_free()

@@ -34,7 +34,8 @@ text = "✖"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="rich_text_label" parent="editor" instance=ExtResource("3")]
+[node name="markdown_label" parent="editor" instance=ExtResource("3")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="text_edit" type="TextEdit" parent="editor"]
@@ -42,22 +43,23 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 wrap_mode = 1
+indent_wrapped_lines = true
 scroll_smooth = true
 scroll_past_end_of_file = true
 caret_blink = true
 highlight_all_occurrences = true
 
 [node name="file_dialog" type="FileDialog" parent="."]
-ok_button_text = "Open"
 mode_overrides_title = false
 access = 2
 filters = PackedStringArray("*.txt ; Text Files", "*.md ; Markdown Documents")
 show_hidden_files = true
+use_native_dialog = true
 
 [connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
-[connection signal="gui_input" from="editor/rich_text_label" to="." method="_on_rich_text_label_gui_input"]
-[connection signal="meta_clicked" from="editor/rich_text_label" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="gui_input" from="editor/markdown_label" to="." method="_on_rich_text_label_gui_input"]
+[connection signal="meta_clicked" from="editor/markdown_label" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="focus_exited" from="editor/text_edit" to="." method="_on_text_edit_focus_exited"]
 [connection signal="text_changed" from="editor/text_edit" to="." method="_on_text_edit_text_changed"]
 [connection signal="file_selected" from="file_dialog" to="." method="_on_file_dialog_file_selected"]
