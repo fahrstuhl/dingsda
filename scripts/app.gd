@@ -7,6 +7,7 @@ func _ready():
 	get_tree().get_root().size_changed.connect(resize)
 	resize()
 	create_and_open_recent_artefacts_document()
+	Global.notify.connect(_on_notification_received)
 
 func resize():
 	print("resizing")
@@ -28,3 +29,7 @@ func create_and_open_recent_artefacts_document():
 	file.store_string(formatted)
 	file.close()
 	$editor_container.open_artefact("user://recent_artefacts.md")
+
+func _on_notification_received(notification: String):
+	$notification/Label.text = notification
+	$notification.show()
