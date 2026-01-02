@@ -162,3 +162,14 @@ func _on_markdown_edit_gui_input(event: InputEvent) -> void:
 func _on_findentry_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		_on_find_close_pressed()
+
+
+func _on_title_pressed() -> void:
+	var message := ""
+	if current_artefact == null:
+		message = "Nothing copied because no document is open."
+	else:
+		var content = get_title()
+		message = "Copied link to document:\n%s" % content
+		DisplayServer.clipboard_set(get_title())
+	Global.show_notification(message)
