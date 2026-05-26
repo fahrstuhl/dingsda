@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhkrao4jt62em"]
+[gd_scene format=3 uid="uid://bhkrao4jt62em"]
 
 [ext_resource type="Script" uid="uid://nfsjl6dkge2l" path="res://scripts/split_text_editor.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://qu8m4to34n3s" path="res://scenes/rich_text_label.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://d2kj21fcrg5yf" path="res://scenes/kanban_editor.tscn" id="3_bwdwe"]
 
-[node name="editor_container" type="VBoxContainer"]
+[node name="editor_container" type="VBoxContainer" unique_id=360890309]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,31 +15,36 @@ size_flags_vertical = 3
 focus_mode = 2
 script = ExtResource("1")
 
-[node name="buttons" type="HBoxContainer" parent="."]
+[node name="buttons" type="HBoxContainer" parent="." unique_id=1828893471]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="title" type="Button" parent="buttons"]
+[node name="title" type="Button" parent="buttons" unique_id=1709705146]
 layout_mode = 2
 
-[node name="open" type="Button" parent="buttons"]
+[node name="kanban" type="Button" parent="buttons" unique_id=219140161]
+layout_mode = 2
+toggle_mode = true
+text = "📑"
+
+[node name="open" type="Button" parent="buttons" unique_id=1043708104]
 layout_mode = 2
 text = "📁"
 
-[node name="close" type="Button" parent="buttons"]
+[node name="close" type="Button" parent="buttons" unique_id=709059239]
 layout_mode = 2
 text = "✖"
 
-[node name="editor" type="PanelContainer" parent="."]
+[node name="editor" type="PanelContainer" parent="." unique_id=1872702883]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="markdown_label" parent="editor" instance=ExtResource("3")]
+[node name="markdown_label" parent="editor" unique_id=202241827 instance=ExtResource("3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="markdown_edit" type="TextEdit" parent="editor"]
+[node name="markdown_edit" type="TextEdit" parent="editor" unique_id=665625995]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -49,36 +55,41 @@ scroll_past_end_of_file = true
 caret_blink = true
 highlight_all_occurrences = true
 
-[node name="findpanel" type="PanelContainer" parent="."]
+[node name="kanban" parent="editor" unique_id=989490561 instance=ExtResource("3_bwdwe")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="findpanel" type="PanelContainer" parent="." unique_id=1010301465]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="findhbox" type="HBoxContainer" parent="findpanel"]
+[node name="findhbox" type="HBoxContainer" parent="findpanel" unique_id=1287598707]
 layout_mode = 2
 
-[node name="findentry" type="LineEdit" parent="findpanel/findhbox"]
+[node name="findentry" type="LineEdit" parent="findpanel/findhbox" unique_id=1234494625]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Find text"
 
-[node name="matches" type="Label" parent="findpanel/findhbox"]
+[node name="matches" type="Label" parent="findpanel/findhbox" unique_id=1125505882]
 layout_mode = 2
 
-[node name="previous" type="Button" parent="findpanel/findhbox"]
+[node name="previous" type="Button" parent="findpanel/findhbox" unique_id=1494841963]
 layout_mode = 2
 text = "previous"
 
-[node name="next" type="Button" parent="findpanel/findhbox"]
+[node name="next" type="Button" parent="findpanel/findhbox" unique_id=74284681]
 layout_mode = 2
 text = "next"
 
-[node name="close" type="Button" parent="findpanel/findhbox"]
+[node name="close" type="Button" parent="findpanel/findhbox" unique_id=49099456]
 layout_mode = 2
 text = "close"
 
-[node name="file_dialog" type="FileDialog" parent="."]
+[node name="file_dialog" type="FileDialog" parent="." unique_id=865098158]
 oversampling_override = 1.0
 mode_overrides_title = false
 access = 2
@@ -87,6 +98,7 @@ show_hidden_files = true
 use_native_dialog = true
 
 [connection signal="pressed" from="buttons/title" to="." method="_on_title_pressed"]
+[connection signal="toggled" from="buttons/kanban" to="." method="_on_kanban_toggled"]
 [connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="gui_input" from="editor/markdown_label" to="." method="_on_rich_text_label_gui_input"]

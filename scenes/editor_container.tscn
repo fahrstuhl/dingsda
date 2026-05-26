@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dindykuocxgo6"]
+[gd_scene format=3 uid="uid://dindykuocxgo6"]
 
 [ext_resource type="Script" uid="uid://dyxb870qoiqkc" path="res://scripts/editor_container.gd" id="1_745ar"]
 [ext_resource type="PackedScene" uid="uid://qu8m4to34n3s" path="res://scenes/rich_text_label.tscn" id="2"]
 
-[node name="editor_container" type="VBoxContainer"]
+[node name="editor_container" type="VBoxContainer" unique_id=519311730]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,54 +13,54 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_745ar")
 
-[node name="controls" type="HBoxContainer" parent="."]
+[node name="controls" type="HBoxContainer" parent="." unique_id=1096350517]
 layout_mode = 2
 alignment = 2
 
-[node name="search_bar" type="LineEdit" parent="controls"]
+[node name="search_bar" type="LineEdit" parent="controls" unique_id=1487715772]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search"
 caret_blink = true
 
-[node name="search" type="Button" parent="controls"]
+[node name="search" type="Button" parent="controls" unique_id=1876732478]
 visible = false
 layout_mode = 2
 text = "▶"
 
-[node name="settings" type="Button" parent="controls"]
+[node name="settings" type="Button" parent="controls" unique_id=431787087]
 visible = false
 layout_mode = 2
 text = "⚙"
 
-[node name="open" type="Button" parent="controls"]
+[node name="open" type="Button" parent="controls" unique_id=2033247836]
 layout_mode = 2
 text = "📁"
 
-[node name="add_container" type="Button" parent="controls"]
+[node name="add_container" type="Button" parent="controls" unique_id=1145903041]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "📑"
 
-[node name="layout" type="OptionButton" parent="controls"]
+[node name="layout" type="OptionButton" parent="controls" unique_id=261948177]
 layout_mode = 2
 
-[node name="close" type="Button" parent="controls"]
+[node name="close" type="Button" parent="controls" unique_id=998394825]
 layout_mode = 2
 text = "✖"
 
-[node name="layout_container" type="TabContainer" parent="."]
+[node name="layout_container" type="TabContainer" parent="." unique_id=1534161418]
 layout_mode = 2
 size_flags_vertical = 3
 current_tab = 0
 tabs_visible = false
 
-[node name="tabbed" type="TabContainer" parent="layout_container"]
+[node name="tabbed" type="TabContainer" parent="layout_container" unique_id=835220644]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="vertical" type="VBoxContainer" parent="layout_container"]
+[node name="vertical" type="VBoxContainer" parent="layout_container" unique_id=782209838]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -69,7 +69,7 @@ theme_override_constants/separation = 1
 alignment = 1
 metadata/_tab_index = 1
 
-[node name="horizontal" type="HBoxContainer" parent="layout_container"]
+[node name="horizontal" type="HBoxContainer" parent="layout_container" unique_id=1469586971]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -78,16 +78,16 @@ theme_override_constants/separation = 1
 alignment = 1
 metadata/_tab_index = 2
 
-[node name="file_dialog" type="FileDialog" parent="."]
+[node name="file_dialog" type="FileDialog" parent="." unique_id=63165193]
 title = "Open File"
 mode_overrides_title = false
 access = 2
 show_hidden_files = true
 use_native_dialog = true
 
-[node name="search_panel" type="PopupPanel" parent="."]
+[node name="search_panel" type="PopupPanel" parent="." unique_id=771744907]
 
-[node name="rich_text_label" parent="search_panel" instance=ExtResource("2")]
+[node name="rich_text_label" parent="search_panel" unique_id=507154433 instance=ExtResource("2")]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 96.0

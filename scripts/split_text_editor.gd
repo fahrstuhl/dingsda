@@ -27,6 +27,7 @@ func set_artefact(artefact_path: String):
 		%markdown_label.set_artefact(artefact_path)
 		%markdown_edit.text = current_artefact.text
 		%markdown_edit.clear_undo_history()
+		%kanban.set_artefact(artefact_path)
 		_on_text_edit_focus_exited()
 		_on_text_edit_text_changed()
 		active = true
@@ -46,9 +47,13 @@ func _on_artefact_changed():
 
 func _on_text_edit_focus_exited():
 	# TODO: don't end editing when focus is still in search panel! Only close when focus leaves scene.
+	stop_editing()
+
+func stop_editing():
 	var ratio = %markdown_edit.get_v_scroll_bar().ratio
 	%markdown_edit.editable = false
 	%markdown_edit.hide()
+	%kanban.hide()
 	%markdown_label.show()
 	%markdown_label.get_v_scroll_bar().ratio = ratio
 	%markdown_label.grab_focus()
@@ -104,6 +109,7 @@ func get_approximate_line(pos: Vector2):
 func start_editing():
 	%markdown_edit.editable = true
 	%markdown_label.hide()
+	%kanban.hide()
 	%markdown_edit.show()
 	%markdown_edit.grab_focus()
 	%markdown_edit.get_v_scroll_bar().ratio = %markdown_label.get_v_scroll_bar().ratio
@@ -173,3 +179,12 @@ func _on_title_pressed() -> void:
 		message = "Copied link to document:\n%s" % content
 		DisplayServer.clipboard_set(get_title())
 	Global.show_notification(message)
+
+
+func _on_kanban_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		stop_editing()
+		%markdown_label.hide()
+		%kanban.show()
+	else:
+		stop_editing()

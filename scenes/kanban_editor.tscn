@@ -1,144 +1,18 @@
 [gd_scene format=3 uid="uid://d2kj21fcrg5yf"]
 
-[node name="editor_container" type="VBoxContainer" unique_id=1620108719]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://dmhesyaawo4lv" path="res://scripts/kanban_editor.gd" id="1_vsruy"]
 
-[node name="buttons" type="HBoxContainer" parent="." unique_id=1631483315]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
+[node name="kanban" type="ScrollContainer" unique_id=989490561]
+offset_right = 1152.0
+offset_bottom = 613.0
+script = ExtResource("1_vsruy")
 
-[node name="title" type="Button" parent="buttons" unique_id=717467371]
-layout_mode = 2
-
-[node name="open" type="Button" parent="buttons" unique_id=125449623]
-layout_mode = 2
-text = "📁"
-
-[node name="close" type="Button" parent="buttons" unique_id=814003611]
-layout_mode = 2
-text = "✖"
-
-[node name="editor" type="PanelContainer" parent="." unique_id=1870217666]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="editor" unique_id=989490561]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="editor/ScrollContainer" unique_id=831785412]
+[node name="Projects" type="VBoxContainer" parent="." unique_id=831785412]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="editor/ScrollContainer/VBoxContainer" unique_id=417863852]
+[node name="Statuses" type="HBoxContainer" parent="Projects" unique_id=160170314]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Label" type="Label" parent="editor/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=323330791]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Backlog"
-
-[node name="Label2" type="Label" parent="editor/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=655130602]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Todo"
-
-[node name="Label3" type="Label" parent="editor/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=66625448]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "In Progress"
-
-[node name="Label4" type="Label" parent="editor/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1420250515]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Done"
-
-[node name="FoldableContainer" type="FoldableContainer" parent="editor/ScrollContainer/VBoxContainer" unique_id=122922878]
-layout_mode = 2
-title = "Project: Server"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer" unique_id=2120798317]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer" unique_id=1199552680]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer/VBoxContainer" unique_id=1937573898]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1690608070]
-layout_mode = 2
-text = "Install secureblue on minipc and get the stupid fucking hologram screen to work"
-autowrap_mode = 3
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer" unique_id=598768186]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer/VBoxContainer2" unique_id=845900253]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer/VBoxContainer2/PanelContainer" unique_id=880632049]
-layout_mode = 2
-text = "Todo"
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer" unique_id=1841852008]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label3" type="Label" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer/VBoxContainer3" unique_id=939888787]
-layout_mode = 2
-text = "In Progress"
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer" unique_id=1355779104]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label4" type="Label" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer/HBoxContainer/VBoxContainer4" unique_id=413662449]
-layout_mode = 2
-text = "Done"
-
-[node name="FoldableContainer2" type="FoldableContainer" parent="editor/ScrollContainer/VBoxContainer" unique_id=848034676]
-layout_mode = 2
-title = "Project: Dingsda"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer2" unique_id=702149012]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer2/HBoxContainer2" unique_id=588781189]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer2/HBoxContainer2/VBoxContainer" unique_id=633908417]
-layout_mode = 2
-text = "Backlog"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer2/HBoxContainer2" unique_id=1087697446]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label2" type="Label" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer2/HBoxContainer2/VBoxContainer2" unique_id=1848080908]
-layout_mode = 2
-text = "Todo"
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer2/HBoxContainer2" unique_id=1280630152]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label3" type="Label" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer2/HBoxContainer2/VBoxContainer3" unique_id=739235738]
-layout_mode = 2
-text = "In Progress"
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer2/HBoxContainer2" unique_id=1880993520]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label4" type="Label" parent="editor/ScrollContainer/VBoxContainer/FoldableContainer2/HBoxContainer2/VBoxContainer4" unique_id=1715562357]
-layout_mode = 2
-text = "Done"
