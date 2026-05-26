@@ -12,7 +12,7 @@ config_version=5
 
 config/name="dingsda"
 run/main_scene="res://scenes/app.tscn"
-config/features=PackedStringArray("4.4")
+config/features=PackedStringArray("4.5")
 run/low_processor_mode=true
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 
@@ -53,7 +53,8 @@ ui_select={
 }
 ui_cancel={
 "deadzone": 0.5,
-"events": []
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 ui_focus_next={
 "deadzone": 0.5,
@@ -94,6 +95,12 @@ ui_home={
 ui_end={
 "deadzone": 0.5,
 "events": []
+}
+ui_find={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":70,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":4194395,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 
 [node]

@@ -1,5 +1,7 @@
 extends Node
 
+signal notify(notification: String)
+
 var settings_path = "user://settings.ini"
 var settings: ArtefactSettings
 
@@ -30,3 +32,6 @@ func add_recent_artefact(path):
 	if len(recent) > get_setting("num_of_recent_artefacts"):
 		recent.pop_back()
 	settings.set_setting("recent_artefacts", recent)
+
+func show_notification(notification: String):
+	emit_signal("notify", notification)
