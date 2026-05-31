@@ -13,8 +13,11 @@ func search(string, path):
 	}
 	return results
 
-func get_filenames(path, recursive):
-	var dir = DirAccess.open(path)
+func get_filenames(path: String, recursive: bool) -> Array[String]:
+	var dir := DirAccess.open(path)
+	if dir == null:
+		print_debug("Error opening directory '%s': '%s'" % [path, DirAccess.get_open_error()])
+		return []
 	dir.include_hidden = true
 	dir.include_navigational = false
 	dir.list_dir_begin()
