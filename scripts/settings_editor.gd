@@ -30,3 +30,8 @@ func _on_scale_item_selected(index: int) -> void:
 	var scale := clampf(1.0 + 0.25 * index, 1.0, 2.0)
 	settings.set_setting("content_scale", scale)
 	Global.apply_scale()
+
+
+func _on_wide_scrollbars_toggled(toggled_on: bool) -> void:
+	settings.set_setting("wide_scrollbars", toggled_on)
+	Global.apply_scale()

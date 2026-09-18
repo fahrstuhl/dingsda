@@ -39,6 +39,7 @@ singletons=[]
 
 [gui]
 
+theme/custom="uid://j300i64p46q"
 theme/use_hidpi=true
 
 [input]

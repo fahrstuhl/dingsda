@@ -4,6 +4,9 @@ signal notify(notification: String)
 
 var settings_path = "user://settings.ini"
 var settings: ArtefactSettings
+var default_theme : Theme = preload("res://fonts/app.theme")
+var scroll_wide : StyleBox = preload("res://theme/scroll_wide.tres")
+var scroll_focus_wide : StyleBox = preload("res://theme/scroll_focus_wide.tres")
 
 func _ready():
 	settings = ArtefactManager.load_artefact(settings_path)
@@ -38,3 +41,11 @@ func show_notification(notification: String):
 
 func apply_scale():
 	get_window().content_scale_factor = get_setting("content_scale")
+	var theme := default_theme
+	if get_setting("wide_scrollbars"):
+		theme.set_stylebox("scroll", "VScrollBar", scroll_wide)
+		theme.set_stylebox("scroll_focus", "VScrollBar", scroll_focus_wide)
+	else:
+		theme.clear_stylebox("scroll", "VScrollBar")
+		theme.clear_stylebox("scroll_focus", "VScrollBar")
+	get_window().theme = theme

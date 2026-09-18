@@ -34,6 +34,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="settings_container/content_scale"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "UI Scale"
 
 [node name="scale" type="OptionButton" parent="settings_container/content_scale"]
@@ -51,6 +52,11 @@ popup/item_3/id = 3
 popup/item_4/text = "200%"
 popup/item_4/id = 4
 
+[node name="wide_scrollbars" type="CheckButton" parent="settings_container"]
+layout_mode = 2
+text = "Wide Scrollbars"
+
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="path_changed" from="settings_container/library_path" to="." method="_on_library_path_path_changed"]
 [connection signal="item_selected" from="settings_container/content_scale/scale" to="." method="_on_scale_item_selected"]
+[connection signal="toggled" from="settings_container/wide_scrollbars" to="." method="_on_wide_scrollbars_toggled"]
