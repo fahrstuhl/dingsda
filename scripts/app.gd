@@ -8,6 +8,7 @@ func _ready():
 	resize()
 	create_and_open_recent_artefacts_document()
 	Global.notify.connect(_on_notification_received)
+	Global.apply_scale()
 
 func resize():
 	print("resizing")

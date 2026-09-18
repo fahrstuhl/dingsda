@@ -13,6 +13,7 @@ func set_default_settings():
 		if DirAccess.make_dir_absolute(lib) != OK:
 			printerr("Can't create wiki directory at {0}".format([lib]))
 	set_setting("library_path", lib)
+	set_setting("content_scale", 1.0)
 
 func add_missing_settings():
 	for key in defaults.get_section_keys(section):

@@ -35,3 +35,6 @@ func add_recent_artefact(path):
 
 func show_notification(notification: String):
 	emit_signal("notify", notification)
+
+func apply_scale():
+	get_window().content_scale_factor = get_setting("content_scale")

@@ -17,7 +17,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="title" type="Label" parent="buttons"]
+[node name="title" type="Button" parent="buttons"]
 layout_mode = 2
 
 [node name="open" type="Button" parent="buttons"]
@@ -40,13 +40,14 @@ stretch_mode = 5
 
 [node name="file_dialog" type="FileDialog" parent="."]
 title = "Open a File"
-size = Vector2i(312, 157)
+size = Vector2i(348, 166)
 ok_button_text = "Open"
 file_mode = 0
 access = 2
 filters = PackedStringArray("\"*.bmp, *.dds, *.exr, *.hdr, *.jpg, *.jpeg, *.png, *.tga, *.svg, *.svgz, *.webp\"; \"Supported Images\"")
 show_hidden_files = true
 
+[connection signal="pressed" from="buttons/title" to="." method="_on_title_pressed"]
 [connection signal="pressed" from="buttons/open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
 [connection signal="file_selected" from="file_dialog" to="." method="_on_file_dialog_file_selected"]
