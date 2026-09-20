@@ -1,5 +1,6 @@
-extends HBoxContainer
+extends VBoxContainer
 
+@export var setting_pretty_name: String = "Some Setting Path"
 @export var setting_name: String = "some_setting_path"
 @export var setting_description: String = "Long description for some setting."
 @export var default_value: String = "user://"
@@ -9,23 +10,23 @@ extends HBoxContainer
 signal path_changed(path)
 
 func _ready():
-	$setting_name.text = setting_name
-	$setting_name.tooltip_text = setting_description
+	%setting_name.text = setting_pretty_name
+	%setting_name.tooltip_text = setting_description
 
 func set_current_value(dir):
 	current_value = dir
-	$current_path.text = current_value
-	$dir_dialog.current_dir = current_value
-	$dir_dialog.current_path = current_value
+	%current_path.text = current_value
+	%dir_dialog.current_dir = current_value
+	%dir_dialog.current_path = current_value
 
 func _on_open_dir_dialog_pressed():
-	$dir_dialog.popup_centered_ratio()
+	%dir_dialog.popup_centered_ratio()
 
 func _on_dir_dialog_dir_selected(dir):
 	save_setting(dir)
 
 func _on_save_pressed():
-	save_setting($current_path.text)
+	save_setting(%current_path.text)
 
 func save_setting(dir):
 	set_current_value(dir)
