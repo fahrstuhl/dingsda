@@ -22,7 +22,7 @@ func get_filenames(path: String, recursive: bool) -> Array[String]:
 	dir.include_navigational = false
 	dir.list_dir_begin()
 	var current = dir.get_next()
-	var filenames = []
+	var filenames :Array[String]= []
 	while current != "":
 		if recursive and dir.current_is_dir():
 			var sub_path = path.path_join(current)
