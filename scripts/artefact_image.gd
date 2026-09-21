@@ -21,3 +21,6 @@ func render():
 
 static func is_read_only():
 	return true
+
+static func get_type_name() -> StringName:
+	return StringName("ArtefactImage")

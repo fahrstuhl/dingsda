@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d2kj21fcrg5yf"]
+
+[ext_resource type="Script" uid="uid://dmhesyaawo4lv" path="res://scripts/kanban_editor.gd" id="1_vsruy"]
+
+[node name="kanban" type="ScrollContainer" unique_id=989490561]
+offset_right = 1152.0
+offset_bottom = 613.0
+script = ExtResource("1_vsruy")
+
+[node name="Projects" type="VBoxContainer" parent="." unique_id=831785412]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Statuses" type="HBoxContainer" parent="Projects" unique_id=160170314]
+unique_name_in_owner = true
+layout_mode = 2

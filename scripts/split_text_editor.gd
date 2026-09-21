@@ -24,9 +24,10 @@ func set_artefact(artefact_path: String):
 		if prev_artefact != null:
 			prev_artefact.changed.disconnect(_on_artefact_changed)
 		current_artefact.changed.connect(_on_artefact_changed)
-		$editor/rich_text_label.set_artefact(artefact_path)
-		%text_edit.text = current_artefact.text
-		%text_edit.clear_undo_history()
+		%markdown_label.set_artefact(artefact_path)
+		%markdown_edit.text = current_artefact.text
+		%markdown_edit.clear_undo_history()
+		%kanban.set_artefact(artefact_path)
 		_on_text_edit_focus_exited()
 		_on_text_edit_text_changed()
 		active = true
@@ -37,37 +38,55 @@ func change_name():
 	emit_signal("name_changed")
 
 func _on_text_edit_text_changed():
-	if %text_edit.editable:
-		current_artefact.text = %text_edit.text
+	if %markdown_edit.editable:
+		current_artefact.text = %markdown_edit.text
 
 func _on_artefact_changed():
-	if not %text_edit.editable:
-		%text_edit.text = current_artefact.text
+	if not %markdown_edit.editable:
+		%markdown_edit.text = current_artefact.text
 
 func _on_text_edit_focus_exited():
-	var ratio = %text_edit.get_v_scroll_bar().ratio
-	%text_edit.editable = false
-	%text_edit.hide()
-	$editor/rich_text_label.show()
-	$editor/rich_text_label.get_v_scroll_bar().ratio = ratio
+	# TODO: don't end editing when focus is still in search panel! Only close when focus leaves scene.
+	stop_editing()
+
+func stop_editing():
+	var ratio = %markdown_edit.get_v_scroll_bar().ratio
+	%markdown_edit.editable = false
+	%markdown_edit.hide()
+	%kanban.hide()
+	%markdown_label.show()
+	%markdown_label.get_v_scroll_bar().ratio = ratio
+	%markdown_label.grab_focus()
 	current_artefact.render_content()
 	current_artefact.store_content()
 
-func _on_rich_text_label_gui_input(event):
-	if active:
-		var click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
-		var doubleclick = click and event.is_double_click()
-		var two_finger_touch = event is InputEventScreenTouch and event.is_pressed() and event.index == 1
-		if doubleclick or two_finger_touch:
-			start_editing()
+func _on_rich_text_label_gui_input(event: InputEvent):
+	if not active:
+		return
+	var click = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
+	var doubleclick = click and event.is_double_click()
+	if doubleclick:
+		start_editing()
+	if event.is_action_pressed("ui_find"):
+		find()
+	if event.is_action_pressed("ui_cancel") and $findpanel.visible:
+		_on_find_close_pressed()
+
+func find():
+	if %markdown_edit.editable:
+		print_debug("opening find panel in text editor")
+	else:
+		print_debug("opening find panel in markdown viewer")
+	$findpanel.show()
+	%findentry.grab_focus()
 
 func get_approximate_line(pos: Vector2):
-	var bar: VScrollBar = $editor/rich_text_label.get_v_scroll_bar()
+	var bar: VScrollBar = %markdown_label.get_v_scroll_bar()
 	var ratio = bar.ratio
-	var max_y = $editor/rich_text_label.get_content_height()
+	var max_y = %markdown_label.get_content_height()
 	var top_y = ratio * max_y
-	var n_lines = $editor/rich_text_label.get_line_count()
-	var v_lines = $editor/rich_text_label.get_visible_line_count()
+	var n_lines = %markdown_label.get_line_count()
+	var v_lines = %markdown_label.get_visible_line_count()
 	var top_line = ratio * n_lines
 	var y = pos.y
 	var clicked_y = top_y + y
@@ -88,11 +107,12 @@ func get_approximate_line(pos: Vector2):
 	return ratio
 
 func start_editing():
-	%text_edit.editable = true
-	$editor/rich_text_label.hide()
-	%text_edit.show()
-	%text_edit.grab_focus()
-	%text_edit.get_v_scroll_bar().ratio = $editor/rich_text_label.get_v_scroll_bar().ratio
+	%markdown_edit.editable = true
+	%markdown_label.hide()
+	%kanban.hide()
+	%markdown_edit.show()
+	%markdown_edit.grab_focus()
+	%markdown_edit.get_v_scroll_bar().ratio = %markdown_label.get_v_scroll_bar().ratio
 
 func _on_close_pressed():
 	queue_free()
@@ -128,3 +148,43 @@ func _on_rich_text_label_meta_clicked(meta: String):
 			which is not necessarily the library path.""")
 			print(path)
 		OS.shell_open(path)
+
+
+func _on_find_entry_text_changed(new_text: String) -> void:
+	pass # Replace with function body.
+
+
+func _on_find_close_pressed() -> void:
+	$findpanel.hide()
+
+
+func _on_markdown_edit_gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_find"):
+		find()
+	if event.is_action_pressed("ui_cancel"):
+		%markdown_edit.release_focus()
+
+
+func _on_findentry_gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		_on_find_close_pressed()
+
+
+func _on_title_pressed() -> void:
+	var message := ""
+	if current_artefact == null:
+		message = "Nothing copied because no document is open."
+	else:
+		var content = get_title()
+		message = "Copied link to document:\n%s" % content
+		DisplayServer.clipboard_set(get_title())
+	Global.show_notification(message)
+
+
+func _on_kanban_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		stop_editing()
+		%markdown_label.hide()
+		%kanban.show()
+	else:
+		stop_editing()

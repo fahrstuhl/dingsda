@@ -24,6 +24,18 @@ func get_title():
 		title = Global.shorten_title(current_artefact.path)
 	return title
 
+
+func _on_title_pressed() -> void:
+	var message := ""
+	if current_artefact == null:
+		message = "Nothing copied because no document is open."
+	else:
+		var content = get_title()
+		message = "Copied link to document:\n%s" % content
+		DisplayServer.clipboard_set(get_title())
+	Global.show_notification(message)
+
+
 func _on_file_dialog_file_selected(path):
 	set_artefact(path)
 

@@ -24,10 +24,39 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="content_scale" type="VBoxContainer" parent="settings_container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_container/content_scale"]
+layout_mode = 2
+text = "UI Scale"
+
+[node name="scale" type="OptionButton" parent="settings_container/content_scale"]
+layout_mode = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "100%"
+popup/item_0/id = 0
+popup/item_1/text = "125%"
+popup/item_1/id = 1
+popup/item_2/text = "150%"
+popup/item_2/id = 2
+popup/item_3/text = "175%"
+popup/item_3/id = 3
+popup/item_4/text = "200%"
+popup/item_4/id = 4
+
 [node name="library_path" parent="settings_container" instance=ExtResource("1")]
 layout_mode = 2
+setting_pretty_name = "Library Path"
 setting_name = "library_path"
 setting_description = "Path to dingsda document library."
 
+[node name="wide_scrollbars" type="CheckButton" parent="settings_container"]
+layout_mode = 2
+text = "Wide Scrollbars"
+
 [connection signal="pressed" from="buttons/close" to="." method="_on_close_pressed"]
+[connection signal="item_selected" from="settings_container/content_scale/scale" to="." method="_on_scale_item_selected"]
 [connection signal="path_changed" from="settings_container/library_path" to="." method="_on_library_path_path_changed"]
+[connection signal="toggled" from="settings_container/wide_scrollbars" to="." method="_on_wide_scrollbars_toggled"]

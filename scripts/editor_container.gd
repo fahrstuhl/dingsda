@@ -19,6 +19,12 @@ func _ready():
 	$controls/layout.add_item("Vertical")
 	$controls/layout.add_item("Horizontal")
 
+func populate_open_existing():
+	var popup : PopupMenu = $controls/open_existing.get_popup()
+	var filenames : Array[String] = Search.get_filenames(Global.get_setting("library_path"), true)
+	for filename in filenames:
+		popup.add_item(filename)
+
 func add_container(child):
 	var current = get_container_for_index($layout_container.current_tab)
 	print(current)
@@ -161,6 +167,7 @@ func search(text):
 		})
 	var formatted = template.format(formatted_results)
 	file.store_string(formatted)
+	%search_bar/recommendations.hide()
 	$search_panel/rich_text_label.set_artefact("user://search_results.md")
 	$search_panel/rich_text_label.current_artefact.text = formatted
 	$search_panel/rich_text_label.current_artefact.render()
@@ -173,3 +180,13 @@ func _on_rich_text_label_meta_clicked(meta):
 
 func _on_search_bar_text_submitted(new_text):
 	search(new_text)
+
+
+func _on_search_bar_text_changed(new_text: String) -> void:
+	if not %search_bar/recommendations.visible:
+		var popup_size := Rect2i(%search_bar.position.x,
+								 %search_bar.position.y + %search_bar.size.x,
+								 %search_bar.size.x,
+								 120)
+		%search_bar/recommendations.popup(popup_size)
+		%search_bar.grab_focus()

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bbbsdxyj42dre"]
+
+[ext_resource type="Script" uid="uid://cgegwr04notdn" path="res://scripts/kanban_project.gd" id="1_dh21m"]
+
+[node name="Project" type="FoldableContainer" unique_id=369691210]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dh21m")
+
+[node name="Statuses" type="HBoxContainer" parent="." unique_id=1538413320]
+unique_name_in_owner = true
+layout_mode = 2
